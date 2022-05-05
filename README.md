@@ -1,33 +1,23 @@
-# Project
+# Test Base for Microsoft 365
+[Test Base for Microsoft 365](https://www.microsoft.com/en-us/testbase) is an Azure service that facilitates data-driven testing of applications. Backed by the power of data and the cloud, it enables IT professionals to take advantage of intelligent testing from anywhere in the world. It will help you test your applications without the hassle, time commitment, and expenditure of setting up and maintaining complex test environments. Most importantly, it will give you access to pre-release Windows Updates on secure virtual machines (VMs) and world-class intelligence for your applications.
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repository contains various samples and utilities to [build a Test Base package](https://docs.microsoft.com/en-us/microsoft-365/test-base/buildpackage?view=o365-worldwide). 
 
-As the maintainer of this project, please make a few updates:
+## Sample List
+Two types of samples are included in this repository: Package and SDK.
+### Package Samples
+Package samples contain many package samples with different test types and different languages.
+### SDK Samples
+Test Base provides APIs/SDK to help you manage Test Base resources, get test results programmatically, and integrate them with our CI tools. SDK samples show how to use Test Base SDK in different ways.
+## Utilities
+Utilities contain tools and scripts to help integrate with CICD, build and verify the Test Base package.
+## Issues and Feedback
+To report an issue, visit [Issues](https://github.com/microsoft/testbase/issues) page.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+To provide feedback, make feature proposals, or participate in polls, visit [Discussions](https://github.com/microsoft/WindowsAppSDK-Samples/discussions) page.
 
-## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
-
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Trademarks
-
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+## Useful links
+- [Test Base Blog](https://techcommunity.microsoft.com/t5/test-base-blog/bg-p/USL-Blog) - Get the latest news about Test Base
+- [Test Base for Microsoft 365 documentation
+](https://docs.microsoft.com/en-us/microsoft-365/test-base/?view=o365-worldwide) - Microsoft documentation on details of Test Base.
