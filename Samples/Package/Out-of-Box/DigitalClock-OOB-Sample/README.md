@@ -1,6 +1,6 @@
 # Digital Clock Out of Box Package
 ## Digital Clock App
-The app is a Windows installer file (.msi), it will open a dialog showing system time when the app is launched.
+The app opens a dialog showing system time.
 ## Out of Box Test
 The Out-of-Box (OOB) test is a basic compatibility test method in Test Base.
 
