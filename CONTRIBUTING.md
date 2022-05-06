@@ -4,9 +4,9 @@ There are many different ways to contribute to this repo, including reporting is
 
 ## Issues and Feature Requests
 
-Issues are submitted through [Issues](../Issues) section.
+Issues are submitted through [Issues](https://github.com/microsoft/testbase/issues) section.
 
-Feature requests and feedback are submitted through [Discussions](../Discussions) section.
+Feature requests and feedback are submitted through [Discussions](https://github.com/microsoft/testbase/discussions) section.
 
 ## Pull Requests
 
