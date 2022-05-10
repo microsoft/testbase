@@ -9,12 +9,13 @@ Two types of samples are included in this repository: Package and SDK.
 Package samples contain many package samples with different test types and different languages.
 ### SDK Samples
 Test Base provides APIs/SDK to help you manage Test Base resources, get test results programmatically, and integrate them with our CI tools. SDK samples show how to use Test Base SDK in different ways.
+- [Samples of how to use Python SDK](https://github.com/Azure-Samples/azure-samples-python-management/tree/master/samples/testbase)
 ## Utilities
 Utilities contain tools and scripts to help integrate with CICD, build and verify the Test Base package.
 ## Issues and Feedback
 To report an issue, visit [Issues](https://github.com/microsoft/testbase/issues) page.
 
-To provide feedback, make feature proposals, or participate in polls, visit [Discussions](https://github.com/microsoft/WindowsAppSDK-Samples/discussions) page.
+To provide feedback, make feature proposals, or participate in polls, visit [Discussions](https://github.com/microsoft/testbase/discussions) page.
 
 
 ## Useful links
