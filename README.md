@@ -1,7 +1,13 @@
 # Test Base for Microsoft 365
 [Test Base for Microsoft 365](https://www.microsoft.com/en-us/testbase) is an Azure service that facilitates data-driven testing of applications. Backed by the power of data and the cloud, it enables IT professionals to take advantage of intelligent testing from anywhere in the world. It will help you test your applications without the hassle, time commitment, and expenditure of setting up and maintaining complex test environments. Most importantly, it will give you access to pre-release Windows Updates on secure virtual machines (VMs) and world-class intelligence for your applications.
 
-This repository contains various samples and utilities to [build a Test Base package](https://docs.microsoft.com/en-us/microsoft-365/test-base/buildpackage?view=o365-worldwide). 
+This repository contains various samples and utilities to [build a Test Base package](https://docs.microsoft.com/en-us/microsoft-365/test-base/buildpackage?view=o365-worldwide).
+
+## Best Practices
+Provide you with some useful samples of Test Base integration, which are best practices to use Test Base, such as
+ - Construct Test Base scripts with your project
+ - Build and upload test base package
+ - Monitor the test results of Test Base
 
 ## Sample List
 Two types of samples are included in this repository: Package and SDK.
