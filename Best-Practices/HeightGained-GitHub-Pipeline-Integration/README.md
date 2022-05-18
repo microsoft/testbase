@@ -19,7 +19,7 @@ Launch script launches the app and returns 0 if the execution was successful. Th
 are located in the scripts folder under root.
 
 ### zip to upload to Test Base
-There is a Powershell script compress.py that zips us the 4 scripts needed
+There is a Powershell script compress.ps1 that zips us the 4 scripts needed
 for OutOfBoxTest in test base along with the binaries for HeightGained app. The 
 folder structure inside the zip folder that gets created is as follows.
 
