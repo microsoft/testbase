@@ -35,3 +35,5 @@ else {
     log("Error: Launch failed as $($app.exitcode)")
     $exit_code = $app.exitcode
 }
+
+exit $exit_code
