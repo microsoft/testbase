@@ -52,13 +52,13 @@ jobs:
         RESOURCE_GROUP_NAME: ${{ secrets.RESOURCE_GROUP_NAME }}
         TESTBASE_ACCOUNT_NAME: ${{ secrets.TESTBASE_ACCOUNT_NAME }}
         APPLICATION_NAME: HeightGained
-        APPLICATION_VERSION: 1.0
+        APPLICATION_VERSION: 1.0.0
         OSS_TO_TEST: Windows 10 21H2, Windows 11 21H2
         PACKAGE_FILE_PATH: ./HeightGained.zip
-        SCRIPT_PATH_INSTALL: install.ps1
-        SCRIPT_PATH_LAUNCH: launch.ps1
-        SCRIPT_PATH_CLOSE: close.ps1
-        SCRIPT_PATH_UNINSTALL: uninstall.ps1
+        SCRIPT_PATH_INSTALL: scripts/install.ps1
+        SCRIPT_PATH_LAUNCH: scripts/launch.ps1
+        SCRIPT_PATH_CLOSE: scripts/close.ps1
+        SCRIPT_PATH_UNINSTALL: scripts/uninstall.ps1
       run: |
         echo Running upload_package.py
         python ./upload_package.py
