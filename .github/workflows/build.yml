@@ -33,12 +33,12 @@ jobs:
     - name: Install pip
       run: |
         python -m pip install --upgrade pip
-    - name: Install dotenv
-      run: |
-        pip install python-dotenv
     - name: Install azure-identity
       run: |
         pip install azure-identity
+    - name: Install azure-storage-blob
+      run: |
+        pip install azure-storage-blob
     - name: Install azure-testbase
       run: |
        pip install azure-mgmt-testbase==1.0.0b1
