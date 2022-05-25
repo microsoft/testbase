@@ -1,1 +1,1 @@
-Compress-Archive -Path ..\bin\Release\netcoreapp3.1\* -DestinationPath .\HeightGained.zip -Force
+Compress-Archive -Path ..\bin\Release\net6.0\* -DestinationPath .\HeightGained.zip -Force
