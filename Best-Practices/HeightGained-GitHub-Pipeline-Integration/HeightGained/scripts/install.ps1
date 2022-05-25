@@ -25,6 +25,7 @@ try {
    Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile 'dotnet-install.ps1'
    ./dotnet-install.ps1 -InstallDir $dotnet_root -Version "6.0.5" -Runtime "dotnet"
    [System.Environment]::SetEnvironmentVariable("DOTNET_ROOT",$dotnet_root, [System.EnvironmentVariableTarget]::User)
+   log("Installation is completed")
 }
 catch {
   log("An error occurred:")
@@ -32,7 +33,6 @@ catch {
   log($_.ScriptStackTrace)
   $exit_code = -1
 }
-log($env:DOTNET_ROOT)
 
 pop-location
 exit $exit_code
