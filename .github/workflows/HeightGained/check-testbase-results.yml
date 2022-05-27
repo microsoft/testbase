@@ -4,7 +4,6 @@
 name: Check Test Base results
 
 on:
-  push:
   schedule:
      - cron:  '0 0 * * *'
      
@@ -22,19 +21,12 @@ jobs:
     - name: Install pip
       run: |
         python -m pip install --upgrade pip
-    - name: Install dotenv
-      run: |
-        pip install python-dotenv
     - name: Install azure-identity
       run: |
         pip install azure-identity
     - name: Install azure-testbase
       run: |
-       pip install azure-mgmt-testbase
-    - name: AzureLoginSample      
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }} 
+       pip install azure-mgmt-testbase==1.0.0b1
     - name: Run test base script      
       id: testbase
       env:
@@ -46,7 +38,8 @@ jobs:
         TESTBASE_ACCOUNT_NAME: ${{ secrets.TESTBASE_ACCOUNT_NAME }}
       run: |
         echo Running script
-        python ./HeightGained/scripts/testbase.py
+        python ./check_results.py
+      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/utilities
      
        
    

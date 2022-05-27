@@ -1,8 +1,9 @@
-name: .NET
+name: Build and deploy to Test Base
 
 on:
   push:
     branches: [ main ]
+    paths: Best-Practices/HeightGained-GitHub-Pipeline-Integration/*
   pull_request:
     branches: [ main ]
 
@@ -25,7 +26,7 @@ jobs:
       working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained
     - name: Compress to Package
       run: ./compress.ps1
-      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/scripts
+      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/utilities
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
@@ -62,4 +63,4 @@ jobs:
       run: |
         echo Running upload_package.py
         python ./upload_package.py
-      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/scripts
+      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/utilities
