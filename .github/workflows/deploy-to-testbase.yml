@@ -3,7 +3,7 @@ name: Build and deploy to Test Base
 on:
   push:
     branches: [ main ]
-    paths: Best-Practices/HeightGained-GitHub-Pipeline-Integration/*
+    paths: Best-Practices/HeightGained-GitHub-Pipeline-Integration/**
   pull_request:
     branches: [ main ]
 
