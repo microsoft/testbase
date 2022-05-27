@@ -4,6 +4,7 @@
 name: Check Test Base results
 
 on:
+  workflow_dispatch:
   schedule:
      - cron:  '0 0 * * *'
      
