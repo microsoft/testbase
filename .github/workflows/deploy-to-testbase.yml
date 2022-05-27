@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
     paths: 
-      - 'Best-Practices/HeightGained-GitHub-Pipeline-Integration/**'
+      - 'Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/**'
   pull_request:
     branches: [ main ]
     paths: 
-      - 'Best-Practices/HeightGained-GitHub-Pipeline-Integration/**'
+      - 'Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/**'
 
 jobs:
   build:
