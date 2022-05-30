@@ -18,7 +18,7 @@ app to try out the functionality of Test Base.
 ```
 
 ### Scripts to test HeightGained in TestBase
-PowerShell scripts under [.\HeightGained\Scripts](.\HeightGained\Scripts) folder are used for Out-of-Box (OOB) test. OOB test is a basic compact test in Test Base, you can refer to [Test Base docs](https://docs.microsoft.com/en-us/microsoft-365/test-base/buildpackage?view=o365-worldwide) for more details.
+PowerShell scripts under [./HeightGained/Scripts](./HeightGained/Scripts) folder are used for Out-of-Box (OOB) test. OOB test is a basic compact test in Test Base, you can refer to [Test Base docs](https://docs.microsoft.com/en-us/microsoft-365/test-base/buildpackage?view=o365-worldwide) for more details.
 
 There're 4 scripts:
 - Install script installs .NET runtime, which is a dependency of the app.
