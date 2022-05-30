@@ -40,7 +40,7 @@ jobs:
       run: |
         echo Running script
         python ./check_results.py
-      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/utilities
+      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/Utilities
      
        
    
