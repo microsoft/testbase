@@ -13,6 +13,7 @@ test_result_format = """
 \tstatus:\t\t{test_status}
 \trunTime:\t{test_run_time}
 \tosName:\t\t{os_name}
+\tupdateType:\t{update_type}
 \trelease:\t{release_name}
 \tversion:\t{build_version}
 """
@@ -69,6 +70,7 @@ def check_testbase_results () :
                             test_status=fuSummary.test_status,
                             test_run_time=fuSummary.test_run_time,
                             os_name=fuSummary.os_name,
+                            update_type="Feature update",
                             release_name=fuSummary.release_name,
                             build_version=fuSummary.build_version))
             
@@ -83,6 +85,7 @@ def check_testbase_results () :
                             test_status=suSummary.test_status,
                             test_run_time=suSummary.test_run_time,
                             os_name=suSummary.os_name,
+                            update_type="Security update",
                             release_name=suSummary.release_name,
                             build_version=suSummary.build_version))
 
