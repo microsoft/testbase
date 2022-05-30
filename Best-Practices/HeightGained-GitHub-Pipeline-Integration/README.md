@@ -2,7 +2,7 @@
 This sample demonstrates how to integrate your app with Test Base via GitHub CI/CD. You can learn from this sample:
 - How to add test scripts for Test Base in your project
 - How to zip your app and scripts to a Test Base package (zip)
-- How to use Test Base Python SDK
+- How to use Test Base Python SDK to upload package and check test results
 - How to build GitHub actions to integrate with Test Base
 ### HeightGained
 The app is a calculator to compute vertical gain based on 
@@ -25,7 +25,7 @@ There're 4 scripts:
 - Launch script launches the app and returns 0 if the execution was successful. 
 - Close and uninstall scripts simply return 0.
 
-### Zip to upload to Test Base
+### Zip the app and scripts to a Test Base package (zip)
 There is a Powershell script [./HeightGained/Utilities/compress.ps1](./HeightGained/Utilities/compress.ps1) that zips us the 4 scripts needed
 for OOB test in test base along with the binaries for HeightGained app. The 
 folder structure inside the zip folder that gets created is as follows.
@@ -60,6 +60,15 @@ AZURE_CLIENT_SECRET=<password from sp create-for-rbac>
 AZURE_SUBSCRIPTION_ID=<subscription id>
 RESOURCE_GROUP_NAME=<resource group name for test base account>
 TESTBASE_ACCOUNT_NAME=<test base account name>
+
+APPLICATION_NAME=<application name in Test Base>
+APPLICATION_VERSION=<application version in Test Base>
+OSS_TO_TEST=<OS version to test, e.g., 'Windows 10 21H2, Windows 11 21H2'>
+PACKAGE_FILE_PATH=<package file path, e.g., './HeightGained.zip'>
+SCRIPT_PATH_INSTALL=<script path, should be 'Scripts/install.ps1'>
+SCRIPT_PATH_LAUNCH=<script path, should be 'Scripts/launch.ps1'>
+SCRIPT_PATH_CLOSE=<script path, should be 'Scripts/close.ps1'>
+SCRIPT_PATH_UNINSTALL=<script path, should be 'Scripts/uninstall.ps1'>
 ```
 
 For more info, visit [Test Base Blog](https://techcommunity.microsoft.com/t5/test-base-blog/test-base-for-microsoft-365-sdk-amp-apis-now-available/ba-p/2888698)
