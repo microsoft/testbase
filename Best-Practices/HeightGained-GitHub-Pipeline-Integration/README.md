@@ -26,7 +26,7 @@ There're 4 scripts:
 - Close and uninstall scripts simply return 0.
 
 ### Zip to upload to Test Base
-There is a Powershell script _.\HeightGained\Utilities\compress.ps1_ that zips us the 4 scripts needed
+There is a Powershell script [./HeightGained/Utilities/compress.ps1](./HeightGained/Utilities/compress.ps1) that zips us the 4 scripts needed
 for OOB test in test base along with the binaries for HeightGained app. The 
 folder structure inside the zip folder that gets created is as follows.
 
@@ -46,7 +46,7 @@ When onboarding to Test Base, you will pass in the relative path of the scripts 
 Launch Script Path: "Scripts/launch.ps1").
     
 ### Using Test Base API
-There're 2 python scripts under _.\HeightGained\Utilities_ demonstrate Test Base API usage.
+There're 2 python scripts under [./HeightGained/Utilities](./HeightGained/Utilities) demonstrate Test Base API usage.
 - upload_package.py shows using Test Base API to upload a package, return 0 if the package is uploaded successfully, return -1 otherwise.
 - check_results.py shows how to list test summaries,
 returns 0 if there was no test failure in the last 24 hours, and return -1 if there was a failure in the last 24 hours.
@@ -64,7 +64,7 @@ TESTBASE_ACCOUNT_NAME=<test base account name>
 
 For more info, visit [Test Base Blog](https://techcommunity.microsoft.com/t5/test-base-blog/test-base-for-microsoft-365-sdk-amp-apis-now-available/ba-p/2888698)
 ### Test Base Integration via GitHub CI/CD
-2 workflows created under _.github/workflows_ to integrate with Test Base. They leverage the python scripts under _.\HeightGained\Utilities_.
+2 workflows created under [.github/workflows](/.github/workflows) to integrate with Test Base. They leverage the python scripts under [./HeightGained/Utilities](./HeightGained/Utilities).
 - deploy-to-testbase.yml: Whenever there's a change on the app, this workflow will:
     - Build the app
     - Zip the package
