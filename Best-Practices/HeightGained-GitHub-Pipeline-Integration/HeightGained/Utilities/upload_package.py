@@ -1,3 +1,9 @@
+# --------------------------------------------------------------------------
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE in the project root for
+# license information.
+# --------------------------------------------------------------------------
+
 import os
 import json
 
@@ -11,6 +17,7 @@ from azure.mgmt.testbase.models import Test
 from azure.mgmt.testbase.models import Command
 from azure.mgmt.testbase.models import GetFileUploadURLParameters
 
+
 def main():
     # Requesting token from Azure
     print("Requesting token from Azure...")
@@ -22,8 +29,8 @@ def main():
     # Run `export AZURE_SUBSCRIPTION_ID="<subscription-id>"` on Linux-based OS
     # Run `set AZURE_SUBSCRIPTION_ID=<subscription-id>` on Windows
     subscription_id = os.environ.get("AZURE_SUBSCRIPTION_ID", None)
-    resource_group = os.environ.get("RESOURCE_GROUP_NAME", None) 
-    testbase_account_name = os.environ.get("TESTBASE_ACCOUNT_NAME", None) 
+    resource_group = os.environ.get("RESOURCE_GROUP_NAME", None)
+    testbase_account_name = os.environ.get("TESTBASE_ACCOUNT_NAME", None)
 
     application_name = os.environ.get("APPLICATION_NAME", None)
     version = os.environ.get("APPLICATION_VERSION", None)
@@ -39,27 +46,34 @@ def main():
 
     # Create Package
     print("Creating/Updating Package...")
-    package_name = "{name}-{version}".format(name=application_name, version = version)
+    package_name = "{name}-{version}".format(
+        name=application_name, version=version)
 
     target_os_info_su = _get_target_os_info(oss_to_test)
 
-    blob_path = _get_package_blob_path(resource_group, testbase_account_name, package_file_path, testbase_client)
+    blob_path = _get_package_blob_path(
+        resource_group, testbase_account_name, package_file_path, testbase_client)
 
-    install_command = _create_command("install", "Install", script_path_install, True)
-    launch_command = _create_command("launch", "Launch", script_path_launch, False)
+    install_command = _create_command(
+        "install", "Install", script_path_install, True)
+    launch_command = _create_command(
+        "launch", "Launch", script_path_launch, False)
     close_command = _create_command("close", "Close", script_path_close, False)
-    uninstall_command = _create_command("uninstall", "Uninstall", script_path_uninstall, False)
-    
+    uninstall_command = _create_command(
+        "uninstall", "Uninstall", script_path_uninstall, False)
+
     oob_test = Test(test_type="OutOfBoxTest",
                     commands=[install_command, launch_command, close_command, uninstall_command], is_active=True)
 
-    package_resource = PackageResource(location="Global", tags={}, application_name=application_name,
-                                     version=version, target_os_list=[
-                                         target_os_info_su],
-                                     flighting_ring="", blob_path=blob_path,
-                                     tests=[oob_test])
-    print(format_json(package_resource))
- 
+    package_resource = PackageResource(location="Global",
+                                       tags={},
+                                       application_name=application_name,
+                                       version=version,
+                                       target_os_list=[target_os_info_su],
+                                       flighting_ring="", blob_path=blob_path,
+                                       tests=[oob_test])
+    print(_format_json(package_resource))
+
     try:
         operation = testbase_client.packages.begin_create(
             resource_group, testbase_account_name, package_name, package_resource)
@@ -77,6 +91,7 @@ def main():
     print("Failed to create/update the package.")
     return -1
 
+
 def _get_package_blob_path(resource_group, testbase_account_name, package_file_path, testbase_client):
     file_upload_url_parameters = GetFileUploadURLParameters(
         blob_name="package.zip")
@@ -92,21 +107,25 @@ def _get_package_blob_path(resource_group, testbase_account_name, package_file_p
     blob_path = upload_url.split(".zip")[0]+".zip"
     return blob_path
 
+
 def _get_target_os_info(oss_to_test: str):
     target_oss = oss_to_test.split(',')
     target_oss_trim = [os.strip() for os in target_oss]
     return TargetOSInfo(
         os_update_type="Security updates", target_o_ss=target_oss_trim)
 
+
 def _create_command(name, action, script_path, restart_after):
     return Command(name=name, action=action, content_type="Path",
-                                content=script_path,
-                                run_elevated=True, restart_after=restart_after,
-                                max_run_time=1800, run_as_interactive=True,
-                                always_run=True, apply_update_before=False)
+                   content=script_path,
+                   run_elevated=True, restart_after=restart_after,
+                   max_run_time=1800, run_as_interactive=True,
+                   always_run=True, apply_update_before=False)
 
-def format_json(content):
+
+def _format_json(content):
     return json.dumps(content.serialize(keep_readonly=True), indent=4, separators=(',', ': '))
+
 
 if __name__ == "__main__":
     exit(main())

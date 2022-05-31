@@ -26,7 +26,7 @@ There're 4 scripts:
 - Close and uninstall scripts simply return 0.
 
 ### Zip the app and scripts to a Test Base package (zip)
-There is a Powershell script [./HeightGained/Utilities/compress.ps1](./HeightGained/Utilities/compress.ps1) that zips us the 4 scripts needed
+There is a PowerShell script [./HeightGained/Utilities/compress.ps1](./HeightGained/Utilities/compress.ps1) that zips us the 4 scripts needed
 for OOB test in test base along with the binaries for HeightGained app. The 
 folder structure inside the zip folder that gets created is as follows.
 
@@ -39,7 +39,7 @@ folder structure inside the zip folder that gets created is as follows.
 |   <everything in the bin folder for the app including the main exe and references>
 ```
 
-Since the Powershell scripts assume the relative location of the binaries to execute, it is 
+Since the PowerShell scripts assume the relative location of the binaries to execute, it is 
 essential to be mindful of the structure inside the zip.
 
 When onboarding to Test Base, you will pass in the relative path of the scripts (e.g.:
@@ -52,7 +52,7 @@ There're 2 python scripts under [./HeightGained/Utilities](./HeightGained/Utilit
 returns 0 if there was no test failure in the last 24 hours, and return -1 otherwise.
 
 In order to run the python script, set the following environment variables. To get the client ID and secret,
-run install Azure CLI, run az login from commandline, and then run az ad sp create-for-rbac
+follow the instructions in [register a new application using Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
 ```
 AZURE_TENANT_ID=<tenand id>
 AZURE_CLIENT_ID=<appId from sp create-for-rbac>
