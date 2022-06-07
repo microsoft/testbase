@@ -1,7 +1,7 @@
 # Calculator
 The app is a calculator with two types: with UI and without UI. It is simply a sample/test app to try out the functionality of Test Base.
-## Prerequisites
 
+## Prerequisites
 Make sure you install the softwares below to build.
 - [.NET SDK](https://dotnet.microsoft.com/download)
 - [Node.js](https://nodejs.org/en/)
