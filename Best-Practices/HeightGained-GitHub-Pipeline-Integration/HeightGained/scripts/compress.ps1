@@ -1,1 +1,0 @@
-Compress-Archive -Path ..\bin\Release\net5.0\* -DestinationPath ..\bin\Release\net5.0\HeightGained.zip -Force

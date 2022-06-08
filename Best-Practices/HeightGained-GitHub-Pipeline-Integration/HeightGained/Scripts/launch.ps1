@@ -1,23 +1,23 @@
 push-location $PSScriptRoot
 $exit_code = 0
 $script_name = $myinvocation.mycommand.name
-$log_dir = "logs"
-Write-Host "$log_dir\$script_name.log"
-$log_file =  "$log_dir\$script_name.log"
+# Root folder
+$root_dir = "$PSScriptRoot\.."
+# Log folder
+$log_dir = "$root_dir\logs"
+$log_file = "$log_dir\$script_name.log"
+Write-Host $log_file
 
-
-push-location "..\bin"
+push-location $root_dir
 if(-not (test-path -path $log_dir )) {
     new-item -itemtype directory -path $log_dir
 }
-
 
 Function log {
    Param ([string]$log_string)
    write-host $log_string
    add-content $log_file -value $log_string
 }
-
 
 log("Running App")
 log(Get-Location)
@@ -35,3 +35,5 @@ else {
     log("Error: Launch failed as $($app.exitcode)")
     $exit_code = $app.exitcode
 }
+
+exit $exit_code
