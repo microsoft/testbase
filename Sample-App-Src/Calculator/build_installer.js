@@ -12,7 +12,7 @@ const path = require('path');
 // appDirectory: "dist_electron/win-unpacked",
 const APP_DIR = path.resolve(__dirname,'./dist_electron/win-unpacked');
 // outputDirectory: "./windows_installer",
-const OUT_DIR = path.resolve(__dirname,'./../windows_installer');
+const OUT_DIR = path.resolve(__dirname,'./windows_installer');
 
 const ICON_File =path.resolve(__dirname,'./public/favicon.ico');
 
