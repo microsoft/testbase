@@ -9,6 +9,10 @@ Provide you with some useful samples of Test Base integration, which are best pr
  - Build and upload test base package
  - Monitor the test results of Test Base
 
+## Sample app source code
+It contains the source code of the sample app. This app is a sample/test 
+app to try out the functionality of Test Base.
+
 ## Sample List
 Two types of samples are included in this repository: Package and SDK.
 ### Package Samples
