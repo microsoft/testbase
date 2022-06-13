@@ -28,4 +28,4 @@ package-lock.json
 #Electron-builder output
 /dist_electron
 /windows_installer
-drop/
+
