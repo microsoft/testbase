@@ -1,9 +1,9 @@
-# Calculator Functional Package
+# Calculator Functional Package (MSTest Test Cases)
 ## Calculator
 Calculator is a sample app which is being tested. Click [here](../../../../Sample-App-Src/Calculator) for details of Calculator.
 
-## Functional Test
-This package sample includes one functional test project: [CLITest](./Tests). Command-line interface Tests is a sample test project that runs and validates basic command line scenarios on **Calculator** application.
+## MSTest Test Project
+This package sample includes one functional test project: [CLITest](./Tests). Command-line interface Tests is a sample test project that runs and validates basic command line scenarios on **Calculator** application, using MSTest framework.
 
 *A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.*
 
@@ -15,7 +15,7 @@ To be able to develop new test cases, what else you need:
 - Microsoft Visual Studio 2017 or later
 
 ### Build
-Run *Tests/build.ps1* in PowerShell to build, then find the binaries under *drop* folder.
+Enter *Tests* folder and run *build.ps1* in PowerShell to build, then find the binaries under *drop* folder.
 
 ## Upload to Test Base
 1. Prepare the package binaries

@@ -1,9 +1,9 @@
-# Calculator Functional Package
+# Calculator Functional Package (Appium CSharp Test Cases)
 ## Calculator
 Calculator is a sample app which is being tested. Click [here](../../../../Sample-App-Src/Calculator) for details of Calculator.
 
-## Functional Test
-This package sample includes one functional test project: [CalculatorTest](./Tests). CalculatorTest is a sample functional test project that runs and validates basic UI scenarios on **Calculator** application. It highlights the following basic interactions to demonstrate how UI testing using Windows Application Driver.
+## Appium Test Project
+This package sample includes one functional test project: [CalculatorTest](./Tests). CalculatorTest is a sample functional test project that runs and validates basic UI scenarios on **Calculator** application. It highlights the following basic interactions to demonstrate how UI testing using [Windows Application Driver](https://github.com/Microsoft/WinAppDriver).
 - Creating a modern UWP app session
 - Finding element using name
 - Finding element using XPath
@@ -23,7 +23,7 @@ To be able to develop new test cases, what else you need:
 To run test cases, following the guide to [install and run Windows Application Driver](https://github.com/microsoft/WinAppDriver/blob/master/README.md#installing-and-running-windows-application-driver).
 
 ### Build
-Run *Tests/build.ps1* in PowerShell to build, then find the binaries under *drop* folder.
+Enter *Tests* folder and run *build.ps1* in PowerShell to build, then find the binaries under *drop* folder.
 
 ## Upload to Test Base
 1. Prepare the package binaries
