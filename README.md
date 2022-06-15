@@ -16,7 +16,24 @@ app to try out the functionality of Test Base.
 ## Sample List
 Two types of samples are included in this repository: Package and SDK.
 ### Package Samples
-Package samples contain many package samples with different test types and different languages.
+We provide many package samples with different test types and different languages. All the samples use [Calculator](./Sample-App-Src/Calculator) as the test target.
+
+#### Functional
+A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.
+
+ [Appinum](https://github.com/appium/appium) is levaraged to do UI automation test. And [MSTest](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest) is levaraged to do CLI test. Also C#, Java, Python are used in the samples.
+
+Here is the list of current functional test samples, click the links to find more details:
+- [Calculator-Appium-Charp-Sample](./Samples/Package/Functional/Calculator-Appium-Charp-Sample)
+- [Calculator-Appium-Java-Sample](./Samples/Package/Functional/Calculator-Appium-Java-Sample)
+- [Calculator-Appium-Python-Sample](./Samples/Package/Functional/Calculator-Appium-Python-Sample)
+- [Calculator-MSTest-Sample](./Samples/Package/Functional/Calculator-MSTest-Sample)
+
+#### Out of Box
+An OOB test performs an install, launch, close, and uninstall of your application. After the install, the launch-close routine is repeated 30 times before a single uninstall is run. The OOB test provides you with standardized telemetry on your package to compare across Windows builds.
+
+One OOB sample is provided, click the link to find more details:
+ - [Calculator-OOB-Sample](./Samples/Package/Out-of-Box/Calculator-OOB-Sample)
 ### SDK Samples
 Test Base provides APIs/SDK to help you manage Test Base resources, get test results programmatically, and integrate them with our CI tools. SDK samples show how to use Test Base SDK in different ways.
 - [Samples of how to use Python SDK](https://github.com/Azure-Samples/azure-samples-python-management/tree/main/samples/testbase)
