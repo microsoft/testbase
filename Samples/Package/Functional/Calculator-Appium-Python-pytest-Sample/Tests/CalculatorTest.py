@@ -5,26 +5,24 @@
 #
 #******************************************************************************
 
-import unittest
-import xmlrunner
+import pytest
 from appium import webdriver
 import time, os
 from time import sleep
 
-class SimpleCalculatorTests(unittest.TestCase):
-
+class TestCalculator:
+    
     @classmethod
-
-    def setUpClass(self):
+    def setup_class(self):
         #set up appium
         desired_caps = {}
         desired_caps["app"] = "C:\Program Files (x86)\Calculator\calculator.exe"
         self.driver = webdriver.Remote(
             command_executor='http://127.0.0.1:4723',
             desired_capabilities= desired_caps)
-
+    
     @classmethod
-    def tearDownClass(self):
+    def teardown_class(self):
         self.driver.quit()
 
     def getresults(self):
@@ -40,7 +38,7 @@ class SimpleCalculatorTests(unittest.TestCase):
         self.driver.find_element_by_xpath("//Button[@Name='+']").click()
         self.driver.find_element_by_xpath("//Button[@Name='7']").click()
         self.driver.find_element_by_xpath("//Button[@Name='=']").click()
-        self.assertEqual(self.getresults(),"8")
+        assert self.getresults() == "8"
 
     def test_minus(self):
         time.sleep(5)
@@ -50,7 +48,7 @@ class SimpleCalculatorTests(unittest.TestCase):
         self.driver.find_element_by_xpath("//Button[@Name='-']").click()
         self.driver.find_element_by_xpath("//Button[@Name='2']").click()
         self.driver.find_element_by_xpath("//Button[@Name='=']").click()
-        self.assertEqual(self.getresults(),"9")
+        assert self.getresults() == "9"
 
     def test_multiply(self):
         time.sleep(5)
@@ -59,12 +57,4 @@ class SimpleCalculatorTests(unittest.TestCase):
         self.driver.find_element_by_xpath("//Button[@Name='x']").click()
         self.driver.find_element_by_xpath("//Button[@Name='6']").click()
         self.driver.find_element_by_xpath("//Button[@Name='=']").click()
-        self.assertEqual(self.getresults(),"30")
-
-if __name__ == '__main__':
-
-    unittest.main(
-        testRunner=xmlrunner.XMLTestRunner(output='test-reports'),
-        failfast=False,
-        buffer=False,
-        catchbreak=False)
+        assert self.getresults() == "30"

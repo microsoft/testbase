@@ -3,7 +3,7 @@
 Calculator is a sample app which is being tested. Click [here](../../../../Sample-App-Src/Calculator) for details of Calculator.
 
 ## Appium Test Project
-This package sample includes one functional test Script: [CalculatorTest.py](./Tests). CalculatorTest.py is a python functional test script based on the '**unittest**' Test Framework to run and validate basic UI scenarios on **Calculator** application. It highlights the following basic interactions to demonstrate how UI testing using [Windows Application Driver](https://github.com/Microsoft/WinAppDriver).
+This package sample includes one functional test Script: [CalculatorTest.py](./Tests). CalculatorTest.py is a sample functional test script based on the '**pytest**' Test Framework to run and validate basic UI scenarios on **Calculator** application. It highlights the following basic interactions to demonstrate how UI testing using [Windows Application Driver](https://github.com/Microsoft/WinAppDriver).
 - Creating a modern UWP app session
 - Finding element using name
 - Finding element using XPath

@@ -48,47 +48,24 @@ pop-location
 
 # Install Appium-Python-Client
 pip install Appium-Python-Client==1.3.0
-pip install unittest-xml-reporting
+# Install Pytest
+pip install pytest
 
 # Launch UI Test
 log("Launch Functional Test")
 Set-Location $test_dir
 
 log("Path: $Env:Path")
-Start-Process python ./CalculatorTest.py
-log("Functional script finished, Path:$test_dir\test-reports")
+$pytestlog = pytest ./CalculatorTest.py
+log("Functional script finished, Path:$test_dir")
 pop-location
 
 Start-Sleep 60
 
 # Parse test result
-[int] $all_failedNum = 0
-
 Write-Host "Parse test result"
-$results = Get-ChildItem "$test_dir\test-reports" -Filter "*.xml"
-if($results.Count -gt 0 ) {
-    log("$($results.count) test result files found in total")
-}
-else {
-    log("No test result files were found.")
-    $exit_code = 1
-}
-
-$results | Foreach-Object{
-    log("Start parse result :" + $_.FullName)
-    [xml]$resultContent = Get-Content $_.FullName
-    $resultCounters = $resultContent.testsuite
-    log("Start parse results : total-$($resultCounters.tests) | errors-$($resultCounters.errors) | failures-$($resultCounters.failures)")
-    $failedNum = $resultCounters.failures
-    $all_failedNum += $failedNum
-    $errorNum = $resultCounters.errors
-    $all_failedNum += $errorNum
-}
-
-
-if($all_failedNum -gt 0) {
-  log("Failed: "+$all_failedNum)
-  $exit_code = 1
-}
+Write-Host $pytestlog[$pytestlog.count-1]
+log($pytestlog)
+$exit_code = 1
 
 exit $exit_code
