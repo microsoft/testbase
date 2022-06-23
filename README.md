@@ -26,7 +26,8 @@ A Functional test executes your uploaded test script(s) on your package. The scr
 Here is the list of current functional test samples, click the links to find more details:
 - [Calculator-Appium-Charp-Sample](./Samples/Package/Functional/Calculator-Appium-Charp-Sample)
 - [Calculator-Appium-Java-Sample](./Samples/Package/Functional/Calculator-Appium-Java-Sample)
-- [Calculator-Appium-Python-Sample](./Samples/Package/Functional/Calculator-Appium-Python-Sample)
+- [Calculator-Appium-Python-pytest-Sample](./Samples/Package/Functional/Calculator-Appium-Python-pytest-Sample)
+- [Calculator-Appium-Python-unittest-Sample](./Samples/Package/Functional/Calculator-Appium-Python-unittest-Sample)
 - [Calculator-MSTest-Sample](./Samples/Package/Functional/Calculator-MSTest-Sample)
 
 #### Out of Box
