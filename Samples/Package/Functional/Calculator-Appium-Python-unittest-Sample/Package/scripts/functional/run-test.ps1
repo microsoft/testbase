@@ -55,7 +55,7 @@ log("Launch Functional Test")
 Set-Location $test_dir
 
 log("Path: $Env:Path")
-Start-Process python ./SimpleCalculatorTests.py
+Start-Process python ./CalculatorTest.py
 log("Functional script finished, Path:$test_dir\test-reports")
 pop-location
 
