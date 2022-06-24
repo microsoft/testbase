@@ -33,8 +33,10 @@ Here is the list of current functional test samples, click the links to find mor
 #### Out of Box
 An OOB test performs an install, launch, close, and uninstall of your application. After the install, the launch-close routine is repeated 30 times before a single uninstall is run. The OOB test provides you with standardized telemetry on your package to compare across Windows builds.
 
-One OOB sample is provided, click the link to find more details:
+Two OOB samples are provided, click the links to find more details:
  - [Calculator-OOB-Sample](./Samples/Package/Out-of-Box/Calculator-OOB-Sample)
+ - [StoreAPP-OOB-Sample](./Samples/Package/Out-of-Box/StoreAPP-OOB-Sample)
+
 ### SDK Samples
 Test Base provides APIs/SDK to help you manage Test Base resources, get test results programmatically, and integrate them with our CI tools. SDK samples show how to use Test Base SDK in different ways.
 - [Samples of how to use Python SDK](https://github.com/Azure-Samples/azure-samples-python-management/tree/main/samples/testbase)

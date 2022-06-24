@@ -1,4 +1,4 @@
-# Calculator Functional Package (Appium Python Test Cases)
+# Calculator Functional Package (Appium Python pytest Test Cases)
 ## Calculator
 Calculator is a sample app which is being tested. Click [here](../../../../Sample-App-Src/Calculator) for details of Calculator.
 
