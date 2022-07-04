@@ -2,7 +2,7 @@
 # Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 # The script in functional test is used to run test cases
-push-location $PSScriptRoot
+Push-Location $PSScriptRoot
 $exit_code = 0
 $script_name = $myinvocation.mycommand.name
 # You can use the following variables to construct file path
@@ -15,17 +15,17 @@ $log_file = "$log_dir\$script_name.log"
 
 $test_dir = "$root_dir\bin\Testbin\Tests"
 if (-not (test-path -path $log_dir )) {
-    new-item -itemtype directory -path $log_dir
+    New-Item -itemtype directory -path $log_dir
 }
 
-Function log {
+Function Log {
     Param ([string]$log_string)
-    write-host $log_string
-    add-content $log_file -value $log_string
+    Write-Host $log_string
+    Add-Content $log_file -value $log_string
 }
 
 # Launch Windows Application Driver
-log("Launch WinAppDriver")
+Log("Launch WinAppDriver")
 $exePath = "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"
 Start-Process $exePath
 
@@ -35,18 +35,18 @@ $PROCESS_NAME = "WinAppDriver"
 Get-Process | findstr $PROCESS_NAME > $null
 if ($? -eq "True") {
     $exit_code = 0
-    log("Launch successfully $PROCESS_NAME as $exit_code")
+    Log("Launch successfully $PROCESS_NAME as $exit_code")
 }
 else {
     $exit_code = 1
-    log("WinAppDriver Launch failed as $exit_code")
+    Log("WinAppDriver Launch failed as $exit_code")
 }
 
 Start-Sleep -Seconds 3
-pop-location
+Pop-Location
 
 # Launch UI Test and Log the result
-log("Launch Functional Test")
+Log("Launch Functional Test")
 Set-location $test_dir
 mvn install
 mvn test
@@ -57,18 +57,18 @@ mvn test
 Write-Host "Parse test result"
 $results = Get-ChildItem "$test_dir\target\surefire-reports" -Filter "*.xml"
 if($results.Count -gt 0 ) {
-    log("$($results.count) test result files found in total")
+    Log("$($results.count) test result files found in total")
 }
 else {
-    log("No test result files were found.")
+    Log("No test result files were found.")
     $exit_code = 1
 }
 
 $results | Foreach-Object{
-    log("Start parse result :" + $_.FullName)
+    Log("Start parse result :" + $_.FullName)
     [xml]$resultContent = Get-Content $_.FullName
     $resultCounters = $resultContent.testsuite
-    log("Start parse results : total-$($resultCounters.tests) | errors-$($resultCounters.errors) | failures-$($resultCounters.failures)")
+    Log("Start parse results : total-$($resultCounters.tests) | errors-$($resultCounters.errors) | failures-$($resultCounters.failures)")
     $failedNum = $resultCounters.failures
     $all_failedNum += $failedNum
     $errorNum = $resultCounters.errors
@@ -77,7 +77,7 @@ $results | Foreach-Object{
 
 
 if($all_failedNum -gt 0) {
-  log("Failed: "+$all_failedNum)
+  Log("Failed: "+$all_failedNum)
   $exit_code = 1
 }
 
