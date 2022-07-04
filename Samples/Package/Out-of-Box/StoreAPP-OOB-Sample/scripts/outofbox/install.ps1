@@ -1,7 +1,8 @@
 # Copyright (c) Microsoft. All rights reserved.
 # Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-push-location $PSScriptRoot
+Push-Location $PSScriptRoot
+./config.ps1
 $exit_code = 0
 $script_name = $myinvocation.mycommand.name
 # You can use the following variables to construct file path
@@ -15,17 +16,17 @@ $log_dir = "$root_dir\logs"
 $log_file = "$log_dir\$script_name.log"
 
 if (-not (test-path -path $bin_dir )) {
-    new-item -itemtype directory -path $bin_dir
+    New-Item -itemtype directory -path $bin_dir
 }
 
 if (-not (test-path -path $log_dir )) {
-    new-item -itemtype directory -path $log_dir
+    New-Item -itemtype directory -path $log_dir
 }
 
-Function log {
+Function Log {
     Param ([string]$log_string)
-    write-host $log_string
-    add-content $log_file -value $log_string
+    Write-Host $log_string
+    Add-Content $log_file -value $log_string
 }
 
 Function DownloadAppxPackage {
@@ -38,6 +39,7 @@ Function DownloadAppxPackage {
         $Path = (Resolve-Path $Path).Path
         #Get Urls to download
         $WebResponse = Invoke-WebRequest -UseBasicParsing -Method 'POST' -Uri 'https://store.rg-adguard.net/api/GetFiles' -Body "type=url&url=$Uri&ring=Retail" -ContentType 'application/x-www-form-urlencoded'
+        #Get the link of the download package from $WebResponse via current architecture
         $LinksMatch = $WebResponse.Links | where { $_ -like '*.appx*' } | where { $_ -like '*_neutral_*' -or $_ -like "*_" + $env:PROCESSOR_ARCHITECTURE.Replace("AMD", "X").Replace("IA", "X") + "_*" } | Select-String -Pattern '(?<=a href=").+(?=" r)'
         $DownloadLinks = $LinksMatch.matches.value
 
@@ -69,19 +71,19 @@ Function DownloadAppxPackage {
 }
 
 # Step 1: Download the application from microsoft store
-log("Download AppxPackage")
-DownloadAppxPackage "https://www.microsoft.com/en-us/p/microsoft-to-do-lists-tasks-reminders/9nblggh5r558" $bin_dir
+Log("Download AppxPackage")
+DownloadAppxPackage $AppStoreURL $bin_dir
 
 # Step 2: Install the application
-log("Installing Application")
+Log("Installing Application")
 
 # Change the current location to bin
-push-location $bin_dir
+Push-Location $bin_dir
 
 $packages = Get-ChildItem -Path "*.Appx" -Name
 foreach ($package in $packages) {
     $fullPath = Resolve-Path -Path "$bin_dir/$package"
-    log("Installing package:$fullPath")
+    Log("Installing package:$fullPath")
     $arguments = "Add-AppxPackage -Path $fullPath"
     Start-Process powershell.exe $arguments -wait -NoNewWindow
 }
@@ -89,18 +91,18 @@ foreach ($package in $packages) {
 $apps = Get-ChildItem -Path "*.AppxBundle" -Name
 foreach ($appName in $apps) {
     $appPath = Resolve-Path -Path "$bin_dir/$appName"
-    log("Installing app:$appPath")
+    Log("Installing app:$appPath")
     $arguments = "Add-AppxPackage -Path $appPath"
     $installer = Start-Process powershell.exe $arguments -wait -passthru -NoNewWindow
     if ($installer.exitcode -eq 0) {
-        log("$appName Installation succesful as $($installer.exitcode)")
+        Log("$appName Installation succesful as $($installer.exitcode)")
     }
     else {
-        log("Error: $appName Installation failed as $($installer.exitcode)")
+        Log("Error: $appName Installation failed as $($installer.exitcode)")
         $exit_code = $installer.exitcode
     }
 }
 
-log("Installation script finished as $exit_code")
-pop-location
+Log("Installation script finished as $exit_code")
+Pop-Location
 exit $exit_code

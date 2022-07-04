@@ -2,7 +2,7 @@
 # Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 # The script in functional test is used to run test cases
-push-location $PSScriptRoot
+Push-Location $PSScriptRoot
 $exit_code = 0
 $script_name = $myinvocation.mycommand.name
 # You can use the following variables to construct file path
@@ -16,17 +16,17 @@ $log_file = "$log_dir\$script_name.log"
 $test_dir = "$root_dir\bin\Testbin\Tests"
 
 if (-not (test-path -path $log_dir )) {
-    new-item -itemtype directory -path $log_dir
+    New-Item -itemtype directory -path $log_dir
 }
 
-Function log {
+Function Log {
     Param ([string]$log_string)
-    write-host $log_string
-    add-content $log_file -value $log_string
+    Write-Host $log_string
+    Add-Content $log_file -value $log_string
 }
 
 # Launch the WinAppDriver app
-log("Launch WinAppDriver")
+Log("Launch WinAppDriver")
 $exePath = "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe"
 Start-Process $exePath
 
@@ -36,15 +36,15 @@ $PROCESS_NAME = "WinAppDriver"
 Get-Process | findstr $PROCESS_NAME > $null
 if ($? -eq "True") {
     $exit_code = 0
-    log("Launch successfully $PROCESS_NAME as $exit_code")
+    Log("Launch successfully $PROCESS_NAME as $exit_code")
 }
 else {
     $exit_code = 1
-    log("WinAppDriver Launch failed as $exit_code")
+    Log("WinAppDriver Launch failed as $exit_code")
 }
 
 Start-Sleep -Seconds 3
-pop-location
+Pop-Location
 
 # Install Appium-Python-Client
 pip install Appium-Python-Client==1.3.0
@@ -52,13 +52,13 @@ pip install Appium-Python-Client==1.3.0
 pip install pytest
 
 # Launch UI Test
-log("Launch Functional Test")
+Log("Launch Functional Test")
 Set-Location $test_dir
 
-log("Path: $Env:Path")
+Log("Path: $Env:Path")
 $pytestlog = pytest ./CalculatorTest.py
-log("Functional script finished, Path:$test_dir")
-pop-location
+Log("Functional script finished, Path:$test_dir")
+Pop-Location
 
 Start-Sleep 60
 
