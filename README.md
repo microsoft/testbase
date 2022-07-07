@@ -21,7 +21,7 @@ We provide many package samples with different test types and different language
 #### Functional
 A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.
 
- [Appinum](https://github.com/appium/appium) is levaraged to do UI automation test. And [MSTest](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest) is levaraged to do CLI test. Also C#, Java, Python are used in the samples.
+ [Appium](https://github.com/appium/appium) is levaraged to do UI automation test. And [MSTest](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest) is levaraged to do CLI test. Also C#, Java, Python are used in the samples.
 
 Here is the list of current functional test samples, click the links to find more details:
 - [Calculator-Appium-Charp-Sample](./Samples/Package/Functional/Calculator-Appium-Charp-Sample)
