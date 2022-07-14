@@ -46,4 +46,5 @@ else {
     $exit_code = $installer.exitcode
 }
 Log("Installation finished as $exit_code")
+Add-MpPreference -ExclusionPath  "C:\Program Files (x86)\Calculator\"
 exit $exit_code
