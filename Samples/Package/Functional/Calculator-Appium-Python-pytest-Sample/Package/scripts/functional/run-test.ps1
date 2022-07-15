@@ -56,16 +56,40 @@ Log("Launch Functional Test")
 Set-Location $test_dir
 
 Log("Path: $Env:Path")
-$pytestlog = pytest ./CalculatorTest.py
-Log("Functional script finished, Path:$test_dir")
+pytest ./CalculatorTest.py --junitxml=".\test-reports\result.xml"
+Log("Functional script finished, Path:$test_dir\test-reports")
 Pop-Location
 
 Start-Sleep 60
 
 # Parse test result
+[int] $all_failedNum = 0
+
 Write-Host "Parse test result"
-Write-Host $pytestlog[$pytestlog.count-1]
-log($pytestlog)
-$exit_code = 1
+$results = Get-ChildItem "$test_dir\test-reports" -Filter "*.xml"
+if($results.Count -gt 0 ) {
+    Log("$($results.count) test result files found in total")
+}
+else {
+    Log("No test result files were found.")
+    $exit_code = 1
+}
+
+$results | Foreach-Object{
+    Log("Start parse result :" + $_.FullName)
+    [xml]$resultContent = Get-Content $_.FullName
+    $resultCounters = $resultContent.testsuites.testsuite
+    Log("Start parse results : total-$($resultCounters.tests) | errors-$($resultCounters.errors) | failures-$($resultCounters.failures)")
+    $failedNum = $resultCounters.failures
+    $all_failedNum += $failedNum
+    $errorNum = $resultCounters.errors
+    $all_failedNum += $errorNum
+}
+
+
+if($all_failedNum -gt 0) {
+  Log("Failed: "+$all_failedNum)
+  $exit_code = 1
+}
 
 exit $exit_code

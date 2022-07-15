@@ -1,6 +1,6 @@
 //******************************************************************************
 //
-// Copyright (c) 2016 Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 //
 // This code is licensed under the MIT License (MIT).
 //
@@ -21,27 +21,25 @@ public class CalculatorTest {
     public static void setup() {
         try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("app",  "C:\\Program Files (x86)\\Calculator\\calculator.exe");
+            capabilities.setCapability("app", "C:\\Program Files (x86)\\Calculator\\calculator.exe");
             CalculatorSession = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
-            CalculatorSession.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        }catch(Exception e){
+            CalculatorSession.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            CalculatorSession.findElementByXPath("//Text");
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
+
         }
     }
 
     @Before
-    public void Clear()
-    {
-        // CalculatorSession.findElementByName("C").click();
+    public void Clear() {
         CalculatorSession.findElementByXPath("//Button[@Name='C']").click();
-        String result = CalculatorSession.findElementByXPath("//Text").getText();
-        Assert.assertEquals("0", result);
+        Assert.assertEquals("0", _GetCalculatorResultText());
     }
 
     @AfterClass
-    public static void TearDown()
-    {
+    public static void TearDown() {
         if (CalculatorSession != null) {
             CalculatorSession.quit();
         }
@@ -49,39 +47,36 @@ public class CalculatorTest {
     }
 
     @Test
-    public void Addition()
-    {
+    public void Addition() {
         CalculatorSession.findElementByXPath("//Button[@Name='1']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='+']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='7']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='=']").click();
-        String result = CalculatorSession.findElementByXPath("//Text").getText();
-        Assert.assertEquals("8", result);
+        Assert.assertEquals("8", _GetCalculatorResultText());
     }
 
     @Test
-    public void Minus()
-    {
-        CalculatorSession.findElementByXPath("//Button[@Name='C']").click();
+    public void Minus() {
         CalculatorSession.findElementByXPath("//Button[@Name='1']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='1']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='-']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='2']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='=']").click();
-        String result = CalculatorSession.findElementByXPath("//Text").getText();
-        Assert.assertEquals("9", result);
+        Assert.assertEquals("9", _GetCalculatorResultText());
 
     }
 
     @Test
-    public void Division()
-    {
-        CalculatorSession.findElementByXPath("//Button[@Name='C']").click();
+    public void Division() {
         CalculatorSession.findElementByXPath("//Button[@Name='5']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='x']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='6']").click();
         CalculatorSession.findElementByXPath("//Button[@Name='=']").click();
-        String result = CalculatorSession.findElementByXPath("//Text").getText();
-        Assert.assertEquals("30", result);
+        Assert.assertEquals("30", _GetCalculatorResultText());
+    }
+
+    protected String _GetCalculatorResultText() {
+        // trim whitespace off of the display value
+        return CalculatorSession.findElementByXPath("//Text").getText().trim();
     }
 }

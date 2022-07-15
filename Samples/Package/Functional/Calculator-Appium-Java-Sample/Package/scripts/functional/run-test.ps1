@@ -48,7 +48,7 @@ Pop-Location
 # Launch UI Test and Log the result
 Log("Launch Functional Test")
 Set-location $test_dir
-mvn install
+mvn install -DskipTests
 mvn test
 
 # Parse test result
