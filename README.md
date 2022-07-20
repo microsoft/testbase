@@ -16,7 +16,14 @@ app to try out the functionality of Test Base.
 ## Sample List
 Two types of samples are included in this repository: Package and SDK.
 ### Package Samples
-We provide many package samples with different test types and different languages. All the samples use [Calculator](./Sample-App-Src/Calculator) as the test target.
+We provide many package samples with different test types and different languages. Most of the samples use [Calculator](./Sample-App-Src/Calculator) as the test target.
+
+#### Out of Box
+An OOB test performs an install, launch, close, and uninstall of your application. After the install, the launch-close routine is repeated 30 times before a single uninstall is run. The OOB test provides you with standardized telemetry on your package to compare across Windows builds.
+
+Two OOB samples are provided, click the links to find more details:
+ - [Calculator-OOB-Sample](./Samples/Package/Out-of-Box/Calculator-OOB-Sample)
+ - [StoreAPP-OOB-Sample](./Samples/Package/Out-of-Box/StoreAPP-OOB-Sample)
 
 #### Functional
 A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.
@@ -29,13 +36,6 @@ Here is the list of current functional test samples, click the links to find mor
 - [Calculator-Appium-Python-pytest-Sample](./Samples/Package/Functional/Calculator-Appium-Python-pytest-Sample)
 - [Calculator-Appium-Python-unittest-Sample](./Samples/Package/Functional/Calculator-Appium-Python-unittest-Sample)
 - [Calculator-MSTest-Sample](./Samples/Package/Functional/Calculator-MSTest-Sample)
-
-#### Out of Box
-An OOB test performs an install, launch, close, and uninstall of your application. After the install, the launch-close routine is repeated 30 times before a single uninstall is run. The OOB test provides you with standardized telemetry on your package to compare across Windows builds.
-
-Two OOB samples are provided, click the links to find more details:
- - [Calculator-OOB-Sample](./Samples/Package/Out-of-Box/Calculator-OOB-Sample)
- - [StoreAPP-OOB-Sample](./Samples/Package/Out-of-Box/StoreAPP-OOB-Sample)
 
 ### SDK Samples
 Test Base provides APIs/SDK to help you manage Test Base resources, get test results programmatically, and integrate them with our CI tools. SDK samples show how to use Test Base SDK in different ways.
