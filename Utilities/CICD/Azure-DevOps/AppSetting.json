@@ -1,0 +1,53 @@
+{
+  "properties": {
+    "blobPath": "",
+    "flightingRing": "",
+    "targetOSList": [
+      {
+        "targetOSs": [
+          "Windows 11 21H2"
+        ],
+        "osUpdateType": "Security updates"
+      }
+    ],
+    "tests": [
+      {
+        "commands": [
+          {
+            "action": "Install",
+            "name": "install",
+            "content": "scripts/outofbox/install.ps1",
+            "applyUpdateBefore": false,
+            "contentType": "Path",
+            "restartAfter": true
+          },
+          {
+            "action": "Launch",
+            "name": "launch",
+            "content": "scripts/outofbox/launch.ps1",
+            "applyUpdateBefore": false,
+            "contentType": "Path"
+          },
+          {
+            "action": "Close",
+            "name": "close",
+            "content": "scripts/outofbox/close.ps1",
+            "applyUpdateBefore": false,
+            "contentType": "Path"
+          },
+          {
+            "action": "Uninstall",
+            "name": "uninstall",
+            "content": "scripts/outofbox/uninstall.ps1",
+            "applyUpdateBefore": false,
+            "contentType": "Path"
+          }
+        ],
+        "testType": "OutOfBoxTest",
+        "isActive": true
+      }
+    ]
+  },
+  "tags": {
+  }
+}
