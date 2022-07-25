@@ -4,7 +4,7 @@ The app is a calculator with two types: with UI and without UI. It is simply a s
 ## Prerequisites
 Make sure you install the softwares below to build.
 - [.NET SDK](https://dotnet.microsoft.com/download)
-- [Node.js](https://nodejs.org/en/)
+- [Node.js](https://nodejs.org/en/) version >= 16.16.0
 - [WiX Toolset](https://github.com/wixtoolset/wix3/releases)
 After installation, add path of wix toolset (e.g, _C:\Program Files (x86)\WiX Toolset v3.14\bin_) to system variables
 
