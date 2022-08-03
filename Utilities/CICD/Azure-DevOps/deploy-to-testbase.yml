@@ -1,0 +1,62 @@
+jobs:
+  - job:
+    displayName: Create TestBase Package
+    pool:
+      vmImage: 'windows-latest'
+    workspace:
+      clean: true
+    timeoutInMinutes: 0
+    steps:
+      - checkout: self
+
+      - task: PowerShell@2
+        displayName: "Build App"
+        inputs:
+          targetType: "inline"
+          workingDirectory: 'Sample-App-src/Calculator'
+          script: |
+            $env:Path += ";$($env:WIX)Bin"
+            $(build.SourcesDirectory)/Sample-App-src/Calculator/build.ps1
+
+      - task: CopyFiles@2
+        displayName: "Copy scripts"
+        inputs:
+          SourceFolder: "Samples/Package/Out-of-Box/Calculator-OOB-Sample"
+          TargetFolder: "$(build.BinariesDirectory)"
+          OverWrite: true
+
+      - task: CopyFiles@2
+        displayName: "Copy MSI"
+        inputs:
+          SourceFolder: "$(build.SourcesDirectory)/Sample-App-src/Calculator/windows_installer"
+          Contents: '*.msi'
+          TargetFolder: "$(build.BinariesDirectory)/Bin"
+          OverWrite: true
+
+      - task: ArchiveFiles@2
+        displayName: "Archive zip"
+        inputs:
+          rootFolderOrFile: "$(build.BinariesDirectory)"
+          includeRootFolder: false
+          archiveFile: "$(Build.ArtifactStagingDirectory)/$(build.archiveName).zip"
+
+      - task: PowerShell@2
+        displayName: "Upload Test Base Package"
+        inputs:
+          targetType: "filePath"
+          filePath: Utilities/CICD/Azure-DevOps/UpdatePackage.ps1
+          arguments: '-packagePath $(Build.ArtifactStagingDirectory)/$(build.archiveName).zip -applicationName $(Build.DefinitionName) -packageVersion $(Build.BuildNumber)'
+          workingDirectory: 'Utilities/CICD/Azure-DevOps'
+        env:
+            AZURE_SUBSCRIPTION_ID: $(azure.subscriptionId)
+            AZURE_CLIENT_ID: $(azure.clientId)
+            AZURE_CLIENT_SECRET: $(azure.clientSecret)
+            AZURE_TENANT_ID: $(azure.tenantId)
+            RESOURCE_GROUP_NAME: $(azure.resourceGroupName)
+            TESTBASE_ACCOUNT_NAME: $(azure.testBaseAccountName)
+
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact"
+        inputs:
+          PathtoPublish: "$(Build.ArtifactStagingDirectory)/$(build.archiveName).zip"
+        condition: succeededOrFailed()
