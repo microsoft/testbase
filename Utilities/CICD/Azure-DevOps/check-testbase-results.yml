@@ -1,0 +1,34 @@
+schedules:
+- cron: "0 0 * * *"
+  displayName: Run At 00:00 on everyday
+  branches:
+    include:
+    - main
+
+#To run on a schedule PR and CI triggers must be disabled.
+pr: none
+trigger: none
+
+jobs:
+  - job:
+    displayName: Check TestBase Results
+    pool:
+      vmImage: 'windows-latest'
+    workspace:
+      clean: true
+    timeoutInMinutes: 0
+    steps:
+      - checkout: self
+
+      - task: PowerShell@2
+        displayName: "Check Test Base Results"
+        inputs:
+          targetType: "filePath"
+          filePath: Utilities/CICD/Azure-DevOps/CheckResults.ps1
+        env:
+            AZURE_SUBSCRIPTION_ID: $(azure.subscriptionId)
+            AZURE_CLIENT_ID: $(azure.clientId)
+            AZURE_CLIENT_SECRET: $(azure.clientSecret)
+            AZURE_TENANT_ID: $(azure.tenantId)
+            RESOURCE_GROUP_NAME: $(azure.resourceGroupName)
+            TESTBASE_ACCOUNT_NAME: $(azure.testBaseAccountName)
