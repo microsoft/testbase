@@ -44,7 +44,7 @@ jobs:
         displayName: "Upload Test Base Package"
         inputs:
           targetType: "filePath"
-          filePath: Utilities/CICD/Azure-DevOps/UpdatePackage.ps1
+          filePath: Utilities/CICD/Azure-DevOps/CreateOrUpdatePackage.ps1
           arguments: '-packagePath $(Build.ArtifactStagingDirectory)/$(build.archiveName).zip -applicationName $(Build.DefinitionName) -packageVersion $(Build.BuildNumber)'
           workingDirectory: 'Utilities/CICD/Azure-DevOps'
         env:

@@ -22,7 +22,7 @@ There're 2 json files that contain request bodies for create/update package.
 
 ### Using Test Base API by PowerShell
 There're 2 PowerShell scripts demonstrate Test Base API usage.
-- UpdatePackage.ps1 shows using Test Base REST API to upload a package, return 0 if the package is uploaded successfully, return 1 otherwise.
+- CreateOrUpdatePackage.ps1 shows using Test Base REST API to upload a package, return 0 if the package is uploaded successfully, return 1 otherwise.
 - CheckResults.ps1 shows how to list test summaries,
 returns 0 if there was no test failure in the last 24 hours, and return -1 otherwise.
 
@@ -37,10 +37,10 @@ $env:AZURE_TENANT_ID=<tenant id>
 $env:RESOURCE_GROUP_NAME=<resource group name for test base account>
 $env:TESTBASE_ACCOUNT_NAME=<test base account name>
 
-// The following are only for UpdatePackage.ps1
+// The following are only for CreateOrUpdatePackage.ps1
 applicationName=<application name in Test Base>
 packageVersion=<application version in Test Base>
 packagePath=<package file path, e.g., './Calculator.zip'>
 
-e.g.,UpdatePackage.ps1 -applicationName <application name in Test Base> -packageVersion <application version in Test Base> -packagePath=<package file path>
+e.g.,CreateOrUpdatePackage.ps1 -applicationName <application name in Test Base> -packageVersion <application version in Test Base> -packagePath=<package file path>
 ```
