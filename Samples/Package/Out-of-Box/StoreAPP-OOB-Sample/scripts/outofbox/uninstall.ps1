@@ -32,7 +32,7 @@ $uninstaller = Start-Process powershell.exe $arguments -wait -passthru -NoNewWin
 # Step 2: Check if uninstallation is succeeded
 # Examples of common commands
 #    - Check uninstall process exit code: $installer.exitcode -eq 0
-#    - Check registy: Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
+#    - Check registry: Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
 #    - Check installed software list: Get-WmiObject -Class Win32_Product | where name -eq "Node.js"
 if ($uninstaller.exitcode -eq 0) {
     Log("Uninstallation succesful as $($uninstaller.exitcode)")
@@ -42,6 +42,6 @@ else {
     $exit_code = $uninstaller.exitcode
 }
 
-Log("Unistallation script finished as $exit_code")
+Log("Uninstallation script finished as $exit_code")
 Pop-Location
 exit $exit_code
