@@ -47,7 +47,7 @@ Pop-Location
 if ($uninstaller.exitcode -eq 0) {
    Log("Uninstallation succesful as $($uninstaller.exitcode)")
 }
-else if ($uninstaller.exitcode -eq 3010) {
+elseif ($uninstaller.exitcode -eq 3010) {
    Log("Uninstallation succesful as $($uninstaller.exitcode), A restart is required to complete the uninstall.")
    $exit_code = 0
 }
