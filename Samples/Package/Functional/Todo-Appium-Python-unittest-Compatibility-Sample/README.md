@@ -12,7 +12,6 @@ It is used to test compatibility with Windows. For example:
 - Open app Settings
 - Terminate and Reset app
 
-
 ## Appium Test Project
 This package sample includes one functional test Script: [TodoTest.py](./Tests). TodoTest.py is a python functional test script based on the '**unittest**' Test Framework to run and validate basic UI scenarios on **Microsoft To Do** application. It highlights the following basic interactions to demonstrate how UI testing using [Windows Application Driver](https://github.com/Microsoft/WinAppDriver).
 - Creating a modern UWP app session
@@ -23,7 +22,7 @@ This package sample includes one functional test Script: [TodoTest.py](./Tests).
 
 *A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.*
 
-### Take ScreentShot
+### Take ScreentShots
 The example cases also implements how to **take screenshots** during testing.You can add the follow code where you want to take a screenshot in your cases(The path is designed by yourself):
 ```
    self.driver.get_screenshot_as_file(self._testMethodName +'.png')
