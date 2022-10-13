@@ -28,6 +28,9 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
       working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained
+    - name: Build Config Json
+      run: ./generateConfigInfo.ps1 HeightGained.exe ..\scripts\
+      working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/Utilities
     - name: Compress to Package
       run: ./compress.ps1
       working-directory: ./Best-Practices/HeightGained-GitHub-Pipeline-Integration/HeightGained/Utilities
