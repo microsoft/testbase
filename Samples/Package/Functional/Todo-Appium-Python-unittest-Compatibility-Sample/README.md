@@ -1,6 +1,6 @@
 # Microsoft To Do Compatibility Test Package (Appium Python unittest Test Cases)
-## Microsoft To do
-This package sample is using Microsoft To Do as the test target. Microsoft To Do is an App in Microsoft Store. Click [here](https://apps.microsoft.com/store/detail/microsoft-to-do-lists-tasks-reminders/9NBLGGH5R558) for details of Microsoft To Do.
+## Microsoft To Do
+This package sample is using **Microsoft To Do** as the test target. **Microsoft To Do** is an App in Microsoft Store. Click [here](https://apps.microsoft.com/store/detail/microsoft-to-do-lists-tasks-reminders/9NBLGGH5R558) for details of **Microsoft To Do**.
 
 ### Compatibility test cases
 It is used to test compatibility with Windows. For example:
