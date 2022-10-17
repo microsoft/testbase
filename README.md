@@ -23,7 +23,7 @@ An OOB test performs an install, launch, close, and uninstall of your applicatio
 
 Two OOB samples are provided, click the links to find more details:
  - [Calculator-OOB-Sample](./Samples/Package/Out-of-Box/Calculator-OOB-Sample)
- - [StoreAPP-OOB-Sample](./Samples/Package/Out-of-Box/StoreAPP-OOB-Sample)
+ - [StoreApp-OOB-Sample](./Samples/Package/Out-of-Box/StoreApp-OOB-Sample)
 
 #### Functional
 A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.
@@ -31,7 +31,7 @@ A Functional test executes your uploaded test script(s) on your package. The scr
  [Appium](https://github.com/appium/appium) is levaraged to do UI automation test. And [MSTest](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest) is levaraged to do CLI test. Also C#, Java, Python are used in the samples.
 
 Here is the list of current functional test samples, click the links to find more details:
-- [Calculator-Appium-Charp-Sample](./Samples/Package/Functional/Calculator-Appium-Charp-Sample)
+- [Calculator-Appium-CSharp-Sample](./Samples/Package/Functional/Calculator-Appium-CSharp-Sample)
 - [Calculator-Appium-Java-Sample](./Samples/Package/Functional/Calculator-Appium-Java-Sample)
 - [Calculator-Appium-Python-pytest-Sample](./Samples/Package/Functional/Calculator-Appium-Python-pytest-Sample)
 - [Calculator-Appium-Python-unittest-Sample](./Samples/Package/Functional/Calculator-Appium-Python-unittest-Sample)
