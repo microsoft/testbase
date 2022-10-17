@@ -23,7 +23,7 @@ An OOB test performs an install, launch, close, and uninstall of your applicatio
 
 Two OOB samples are provided, click the links to find more details:
  - [Calculator-OOB-Sample](./Samples/Package/Out-of-Box/Calculator-OOB-Sample)
- - [StoreAPP-OOB-Sample](./Samples/Package/Out-of-Box/StoreAPP-OOB-Sample)
+ - [StoreApp-OOB-Sample](./Samples/Package/Out-of-Box/StoreApp-OOB-Sample)
 
 #### Functional
 A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.
