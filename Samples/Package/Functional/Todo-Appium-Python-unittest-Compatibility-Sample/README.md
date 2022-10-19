@@ -22,7 +22,7 @@ This package sample includes one functional test Script: [TodoTest.py](./Tests).
 
 *A Functional test executes your uploaded test script(s) on your package. The scripts are run in the sequence you specified and a failure in a particular script will stop subsequent scripts from executing.*
 
-### Take ScreentShots
+### Take Screenshots
 The example cases also implements how to **take screenshots** during testing.You can add the follow code where you want to take a screenshot in your cases(The path is designed by yourself):
 ```
    self.driver.get_screenshot_as_file(self._testMethodName +'.png')

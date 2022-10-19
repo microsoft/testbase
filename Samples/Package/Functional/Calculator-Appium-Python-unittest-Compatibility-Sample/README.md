@@ -20,12 +20,12 @@ It is used to test your app's compatibility with Windows. For example:
 - Pin/Unpin your app to Start/TaskBar
 - Open/Close your app from TaskBar
 
-### Take ScreentShots
+### Take Screenshots
 The example cases also implements how to **take screenshots** during testing.You can add the follow code where you want to take a screenshot in your cases(The path is designed by yourself):
 ```
    self.driver.get_screenshot_as_file(self._testMethodName +'.png')
 ```
-After completing the test.You will get the ScreentShot files under your target filefolder and here is the example screenshot from our example test case:
+After completing the test.You will get the Screenshot files under your target filefolder and here is the example screenshot from our example test case:
 ![searchCalculator](.\test_searchCalculator.png)
 
 ### Prerequsites
