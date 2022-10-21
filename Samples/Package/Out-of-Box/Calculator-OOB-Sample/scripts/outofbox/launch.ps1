@@ -14,8 +14,8 @@ $log_dir = "$root_dir\logs"
 
 $log_file = "$log_dir\$script_name.log"
 
-if(-not (test-path -path $log_dir )) {
-    New-Item -itemtype directory -path $log_dir
+if (-not (test-path -path $log_dir )) {
+   New-Item -itemtype directory -path $log_dir
 }
 
 Function Log {
@@ -23,6 +23,15 @@ Function Log {
    Write-Host $log_string
    Add-Content $log_file -value $log_string
 }
+$appName = ''
+$appProcessName = ''
+Get-ChildItem -Filter "*.json" | ForEach-Object {
+   $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
+   $appName = $jsonInfo.appName;  
+   $appProcessName = $jsonInfo.appProcessName;  
+}
+Write-Host "AppName:$appName"
+Write-Host "AppProcessName:$appProcessName"
 
 # Step 1: Launch the application
 # For example:
@@ -30,14 +39,14 @@ Function Log {
 #    - Use environment variable if need: Start-Process -FilePath "$env:comspec" -ArgumentList "/c dir `"%systemdrive%\program files`""
 Log("Launch Application")
 # Change the $exePath to your execution path, add -ArgumentList if need.
-$exePath = "C:\Program Files (x86)\Calculator\calculator.exe"
+$exePath = "C:\Program Files (x86)\Calculator\$appName"
 Start-Process -FilePath $exePath
 
 # Step 2: Check if the application launched successfully
 # Examples of common commands
 #    - Check if a process existed: Get-Process -Name appName
 #    - Check if a window existed: get-process | where {$_.MainWindowTitle -like "*Notepad*"}
-$PROCESS_NAME = "calculator"
+$PROCESS_NAME = $appProcessName
 Get-Process | findstr $PROCESS_NAME > $null
 if ($? -eq "True") {
    Log("Launch successfully $PROCESS_NAME...")

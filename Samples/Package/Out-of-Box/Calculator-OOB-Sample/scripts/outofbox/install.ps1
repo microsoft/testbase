@@ -24,6 +24,13 @@ Function Log {
    Add-Content $log_file -value $log_string
 }
 
+$msiName=''
+Get-ChildItem -Filter "*.json" | ForEach-Object {
+   $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
+   $msiName     = $jsonInfo.msiName; 
+}
+Write-Host "msiName:$msiName"
+
 # Step 1: Install the application
 # Call install commands, if the application has dependencies, install them in proper order as well
 # Examples of common install commands
@@ -34,10 +41,10 @@ Log("Installing Application")
 # Change the current location to bin
 Push-Location $bin_dir
 if ([Environment]::Is64BitProcess) {
-    $installer_name = "calculator.msi"
+    $installer_name = $msiName
 }
 else {
-    $installer_name = "calculator.msi"
+    $installer_name = $msiName
 }
 $arguments = "/i "+$installer_name+" /quiet /L*v "+"$log_dir"+"\calculator-installation.log"
 $installer = Start-Process msiexec.exe $arguments -wait -passthru

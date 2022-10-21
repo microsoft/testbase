@@ -25,6 +25,14 @@ jobs:
           TargetFolder: "$(build.BinariesDirectory)"
           OverWrite: true
 
+      - task: PowerShell@2
+        displayName: "Generate Config info"
+        inputs:
+          targetType: "filePath"
+          filePath: Utilities/CICD/Azure-DevOps/generateConfigInfo.ps1
+          arguments: '-appName $(build.appName) -appProcessName $(build.appProcessName) -msiName $(build.msiName) -configFilePath $(build.BinariesDirectory)/scripts/outofbox/'
+          workingDirectory: 'Utilities/CICD/Azure-DevOps'        
+
       - task: CopyFiles@2
         displayName: "Copy MSI"
         inputs:
