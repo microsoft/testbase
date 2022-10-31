@@ -24,14 +24,17 @@ Function Log {
    Add-Content $log_file -value $log_string
 }
 $appName = ''
+$installedPath = ''
 $appProcessName = ''
 Get-ChildItem -Filter "*.json" | ForEach-Object {
    $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
    $appName = $jsonInfo.appName;  
-   $appProcessName = $jsonInfo.appProcessName;  
+   $installedPath = $jsonInfo.installedPath;  
+   $appProcessName = $jsonInfo.appProcessName;
 }
 Write-Host "AppName:$appName"
 Write-Host "AppProcessName:$appProcessName"
+Write-Host "InstalledPath:$installedPath"
 
 # Step 1: Launch the application
 # For example:
@@ -39,7 +42,7 @@ Write-Host "AppProcessName:$appProcessName"
 #    - Use environment variable if need: Start-Process -FilePath "$env:comspec" -ArgumentList "/c dir `"%systemdrive%\program files`""
 Log("Launch Application")
 # Change the $exePath to your execution path, add -ArgumentList if need.
-$exePath = "C:\Program Files (x86)\$appProcessName\$appName"
+$exePath = "$installedPath\$appName"
 Start-Process -FilePath $exePath
 
 # Step 2: Check if the application launched successfully

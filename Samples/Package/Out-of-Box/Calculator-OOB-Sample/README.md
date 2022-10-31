@@ -13,7 +13,8 @@ Before zip the package, in order to run the scripts, update the following variab
 {
     "appName": "<application name,e.g.,calculator.exe>",
     "appProcessName": "<application process name,e.g.,calculator>",
-    "msiName": "<msi package name,e.g.,calculator.msi>"
+    "msiName": "<msi package name,e.g.,calculator.msi>",
+    "installedPath": "<installed path,e.g.,C:\\Program Files (x86)\\calculator>"
 }
 ```
 2. Zip the package  

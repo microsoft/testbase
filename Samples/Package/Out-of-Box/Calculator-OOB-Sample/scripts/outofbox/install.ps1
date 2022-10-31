@@ -25,6 +25,7 @@ Function Log {
 }
 
 $msiName=''
+$appProcessName=''
 Get-ChildItem -Filter "*.json" | ForEach-Object {
    $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
    $msiName     = $jsonInfo.msiName; 

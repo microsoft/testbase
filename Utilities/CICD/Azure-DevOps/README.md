@@ -44,13 +44,5 @@ packagePath=<package file path, e.g., './Calculator.zip'>
 
 e.g.,CreateOrUpdatePackage.ps1 -applicationName <application name in Test Base> -packageVersion <application version in Test Base> -packagePath=<package file path>
 ```
-### For multiple packages
-Create multiple CICD workflows, 
-e.g., the calculator sample, update the variables in [config.json](../../../Sample-App-Src/Calculator/scripts/config.json)
-```
-{
-    "appName": "<application name,e.g.,calculator.exe>",
-    "appProcessName": "<application process name,e.g.,calculator>",
-    "msiName": "<msi package name,e.g.,calculator.msi>"
-}
-```
+### Create multiple packages
+To create multiple packages, you can create multiple CICD workflows, and update the variables in [config.json](../../../Samples/Package/Out-of-Box/Calculator-OOB-Sample/scripts/outofbox/config.json) for each workflow.
