@@ -39,7 +39,7 @@ Write-Host "AppProcessName:$appProcessName"
 #    - Use environment variable if need: Start-Process -FilePath "$env:comspec" -ArgumentList "/c dir `"%systemdrive%\program files`""
 Log("Launch Application")
 # Change the $exePath to your execution path, add -ArgumentList if need.
-$exePath = "C:\Program Files (x86)\Calculator\$appName"
+$exePath = "C:\Program Files (x86)\$appProcessName\$appName"
 Start-Process -FilePath $exePath
 
 # Step 2: Check if the application launched successfully

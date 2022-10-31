@@ -29,8 +29,10 @@ $msiName = ''
 Get-ChildItem -Filter "*.json" | ForEach-Object {
    $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
    $msiName = $jsonInfo.msiName; 
+   $appProcessName = $jsonInfo.appProcessName;  
 }
 Write-Host "msiName:$msiName"
+Write-Host "AppProcessName:$appProcessName"
 
 # Step 1: Uninstall the application
 Log("Uninstalling Application")
@@ -42,7 +44,7 @@ if ([Environment]::Is64BitProcess) {
 else {
    $installer_name = $msiName
 }
-$arguments = " /uninstall " + $installer_name + " /quiet /L*v " + "$log_dir" + "\calculator-unstallation.log"
+$arguments = " /uninstall " + $installer_name + " /quiet /L*v " + "$log_dir" + "\$appProcessName-unstallation.log"
 $uninstaller = Start-Process msiexec.exe $arguments -wait -passthru
 Pop-Location
 

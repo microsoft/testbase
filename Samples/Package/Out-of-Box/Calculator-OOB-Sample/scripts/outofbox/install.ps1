@@ -28,8 +28,10 @@ $msiName=''
 Get-ChildItem -Filter "*.json" | ForEach-Object {
    $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
    $msiName     = $jsonInfo.msiName; 
+   $appProcessName = $jsonInfo.appProcessName;  
 }
 Write-Host "msiName:$msiName"
+Write-Host "AppProcessName:$appProcessName"
 
 # Step 1: Install the application
 # Call install commands, if the application has dependencies, install them in proper order as well
@@ -46,7 +48,7 @@ if ([Environment]::Is64BitProcess) {
 else {
     $installer_name = $msiName
 }
-$arguments = "/i "+$installer_name+" /quiet /L*v "+"$log_dir"+"\calculator-installation.log"
+$arguments = "/i "+$installer_name+" /quiet /L*v "+"$log_dir"+"\$appProcessName-installation.log"
 $installer = Start-Process msiexec.exe $arguments -wait -passthru
 Pop-Location
 
