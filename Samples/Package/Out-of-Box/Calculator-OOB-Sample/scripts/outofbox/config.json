@@ -1,6 +1,5 @@
 {
-    "appName": "calculator.exe",
     "appProcessName": "calculator",
     "msiName": "calculator.msi",
-    "installedPath": "C:\\Program Files (x86)\\calculator"
+    "installedFullPath": "C:\\Program Files (x86)\\calculator\\calculator.exe"
 }
