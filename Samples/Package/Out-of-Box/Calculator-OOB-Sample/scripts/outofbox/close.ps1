@@ -14,8 +14,8 @@ $log_dir = "$root_dir\logs"
 
 $log_file = "$log_dir\$script_name.log"
 
-if(-not (test-path -path $log_dir )) {
-    New-Item -itemtype directory -path $log_dir
+if (-not (test-path -path $log_dir )) {
+   New-Item -itemtype directory -path $log_dir
 }
 
 Function Log {
@@ -24,22 +24,29 @@ Function Log {
    Add-Content $log_file -value $log_string
 }
 
-# Step 1: Stop the application
-$PROCESS_NAME = "calculator"
- if (Get-Process -Name $PROCESS_NAME) {
-        Log("Stopping $PROCESS_NAME...")
-        Stop-Process -Name $PROCESS_NAME
- }
+$appProcessName = ''
+Get-ChildItem -Filter "*.json" | ForEach-Object {
+   $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
+   $appProcessName = $jsonInfo.appProcessName;  
+}
+Write-Host "AppProcessName:$appProcessName"
 
- # Step 2: Check application is stopped successfully
- $appclosed = Get-Process -Name $PROCESS_NAME
- if ($appclosed.HasExited) {
-    Log("close succesful $($appclosed.HasExited)")
- }
- else {
-    Log("Error: close failed as $($appclosed.exitcode)")
-    $exit_code = $appclosed.exitcode
- }
+# Step 1: Stop the application
+$PROCESS_NAME = $appProcessName
+if (Get-Process -Name $PROCESS_NAME) {
+   Log("Stopping $PROCESS_NAME...")
+   Stop-Process -Name $PROCESS_NAME
+}
+
+# Step 2: Check application is stopped successfully
+$appclosed = Get-Process -Name $PROCESS_NAME
+if ($appclosed.HasExited) {
+   Log("close succesful $($appclosed.HasExited)")
+}
+else {
+   Log("Error: close failed as $($appclosed.exitcode)")
+   $exit_code = $appclosed.exitcode
+}
 
 
 Log("close script finished as $exit_code")

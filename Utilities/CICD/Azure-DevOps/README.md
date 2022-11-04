@@ -10,7 +10,7 @@ Before using the yml in ADO pipeline, set the following variables
 ![DevOps variables](./ADOVariables.png)
 
 2 workflows created to integrate with Test Base.
-- delpoy-to-testbase.yml: Whenever there's a change on the app, this workflow will:
+- deploy-to-testbase.yml: Whenever there's a change on the app, this workflow will:
     - Build the app
     - Zip the package
     - Upload the package to Test Base and start test
@@ -44,3 +44,5 @@ packagePath=<package file path, e.g., './Calculator.zip'>
 
 e.g.,CreateOrUpdatePackage.ps1 -applicationName <application name in Test Base> -packageVersion <application version in Test Base> -packagePath=<package file path>
 ```
+### Create multiple packages
+To create multiple packages, you can create multiple CICD workflows, and update the variables in [config.json](../../../Samples/Package/Out-of-Box/Calculator-OOB-Sample/scripts/outofbox/config.json) for each workflow.

@@ -15,8 +15,8 @@ $log_dir = "$root_dir\logs"
 $log_file = "$log_dir\$script_name.log"
 
 
-if(-not (test-path -path $log_dir )) {
-    New-Item -itemtype directory -path $log_dir
+if (-not (test-path -path $log_dir )) {
+   New-Item -itemtype directory -path $log_dir
 }
 
 Function Log {
@@ -25,17 +25,27 @@ Function Log {
    Add-Content $log_file -value $log_string
 }
 
+$msiName = ''
+$appProcessName = ''
+Get-ChildItem -Filter "*.json" | ForEach-Object {
+   $jsonInfo = (Get-Content $_.fullname | ConvertFrom-Json)
+   $msiName = $jsonInfo.msiName; 
+   $appProcessName = $jsonInfo.appProcessName;  
+}
+Write-Host "msiName:$msiName"
+Write-Host "AppProcessName:$appProcessName"
+
 # Step 1: Uninstall the application
 Log("Uninstalling Application")
 # Change the current location to bin
 Push-Location "..\..\bin"
 if ([Environment]::Is64BitProcess) {
-    $installer_name = "calculator.msi"
+   $installer_name = $msiName
 }
 else {
-    $installer_name = "calculator.msi"
+   $installer_name = $msiName
 }
-$arguments = " /uninstall "+$installer_name+" /quiet /L*v "+"$log_dir"+"\calculator-unstallation.log"
+$arguments = " /uninstall " + $installer_name + " /quiet /L*v " + "$log_dir" + "\$appProcessName-unstallation.log"
 $uninstaller = Start-Process msiexec.exe $arguments -wait -passthru
 Pop-Location
 
