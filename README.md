@@ -40,7 +40,7 @@ Here is the list of current functional test samples, click the links to find mor
 #### Flow Driven
 Flow driven test allows you to arrange your test scripts with enhanced flow control. To help you comprehensively validate the impact of an in-place Windows upgrade, you can use flow driven tests to execute your tests on both the baseline OS and target OS with a side-by-side test result comparison.
 
-The Flow Driven test samples will be came up soon.
+The Flow driven test samples will be available soon.
 
 ### SDK Samples
 Test Base provides APIs/SDK to help you manage Test Base resources, get test results programmatically, and integrate them with our CI tools. SDK samples show how to use Test Base SDK in different ways.
