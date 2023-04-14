@@ -18,7 +18,7 @@ if (!(Test-Path $intuneFilePath)) {
 
 $ituneFileName = (Get-Item $intuneFilePath).Name.ToLower()
 $draftPackageName = (New-Guid).guid
-
+$uploadList = [System.Collections.ArrayList]@('bin');
 #--------------------------------------------------------------------------------------------------------------
 # Connect to Azure Account
 #--------------------------------------------------------------------------------------------------------------
@@ -79,11 +79,13 @@ Function GetAndUpdateIntuneDependentApp {
                 'appId'            = $dependentAppResult.displayName
                 'installCommand'   = $dependentAppResult.installCommandLine
                 'uninstallCommand' = $dependentAppResult.uninstallCommandLine
-                'status'           = 4
+                'status'           = '4'
             }
     
-            $draftPackageSetting.properties[0].intuneMetadata.intuneAppDependencies += $currObj     
-        }           
+            $draftPackageSetting.properties[0].intuneMetadata.intuneAppDependencies += $currObj   
+            Write-Host "add ${targetId} to upload list."    
+            $uploadList.Add($targetId)
+        }
     }
 }
 
@@ -152,20 +154,22 @@ Function UploadIntuneFile {
         $baseUrl = $pathData.baseUrl
         $workingPath = $pathData.workingPath
         $sasToken = $pathData.sasToken
-        $uploadUrl = "${baseUrl}/${workingPath}/bin/${ituneFileName}?${sasToken}"
-        Write-Host "Upload Intune zip"
-        #Define required Headers
-        $headers = @{
-            'x-ms-blob-type' = 'BlockBlob'
-        }
-        #Upload File...
-        try {
-            Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $intuneFilePath
-        }
-        catch {
-            Write-Host "Failed to upload package zip"
-            exit 1
-        }
+        foreach ($curr in $uploadList) {
+            $uploadUrl = "${baseUrl}/${workingPath}/${curr}/${ituneFileName}?${sasToken}"
+            Write-Host "Upload Intune zip $uploadUrl"
+            #Define required Headers
+            $headers = @{
+                'x-ms-blob-type' = 'BlockBlob'
+            }
+            #Upload File...
+            try {
+                Invoke-RestMethod -Uri $uploadUrl -Method Put -Headers $headers -InFile $intuneFilePath
+            }
+            catch {
+                Write-Host "Failed to upload package zip"
+                exit 1
+            }
+        }        
     }
 }
 
@@ -299,7 +303,7 @@ function Main {
     GetAndUpdateIntuneDependentApp($apps[0])
     CreateDraftPackage   
     $pathData = GetDraftPackagePath
-    UploadIntuneFile($pathData)
+    UploadIntuneFile($pathData)  
     ExtractFile    
     PatchDraftPackage
     GenerateFoldersAndScripts    
