@@ -1,0 +1,145 @@
+{
+  "properties": {
+    "sourceType": "IntuneWin",
+    "appFileName": "setup.intunewin",
+    "useSample":false,
+    "applicationName": "setup",
+    "version": "1111",
+    "intuneMetadata": {
+      "intuneApp": {
+        "createDate":"0001-01-01T00:00:00.0000000Z",
+        "lastProcessed": 638167943107908100,
+        "setupFile": "setup.exe"       
+      },
+      "intuneAppDependencies": [
+      ]
+    }, 
+    "useAutofill": false,
+    
+    "testTypes": [
+      "OutOfBoxTest"
+    ],
+    "firstPartyApps": [],
+    
+    "targetOSList": [
+      {
+        "osUpdateType": "Security updates",
+        "targetOSs": [
+          "Windows 11 22H2"
+        ]
+      }
+    ],
+    "tests": [
+        {
+          "commands": [
+            {
+              "name": "install",
+              "action": "Install",
+              "contentType": "Path",
+              "content": "scripts/outofbox/install.ps1",
+              "runElevated": false,
+              "restartAfter": true,
+              "maxRunTime": 0,
+              "runAsInteractive": false,
+              "alwaysRun": false,
+              "applyUpdateBefore": false,
+              "preUpgrade": false,
+              "postUpgrade": false,
+              "install1PAppBefore": false
+            },
+            {
+              "name": "launch",
+              "action": "Launch",
+              "contentType": "Path",
+              "content": "scripts/outofbox/launch.ps1",
+              "runElevated": false,
+              "restartAfter": false,
+              "maxRunTime": 0,
+              "runAsInteractive": false,
+              "alwaysRun": false,
+              "applyUpdateBefore": false,
+              "preUpgrade": false,
+              "postUpgrade": false,
+              "install1PAppBefore": false
+            },
+            {
+              "name": "close",
+              "action": "Close",
+              "contentType": "Path",
+              "content": "scripts/outofbox/close.ps1",
+              "runElevated": false,
+              "restartAfter": false,
+              "maxRunTime": 0,
+              "runAsInteractive": false,
+              "alwaysRun": false,
+              "applyUpdateBefore": false,
+              "preUpgrade": false,
+              "postUpgrade": false,
+              "install1PAppBefore": false
+            },
+            {
+              "name": "uninstall",
+              "action": "Uninstall",
+              "contentType": "Path",
+              "content": "scripts/outofbox/uninstall.ps1",
+              "runElevated": false,
+              "restartAfter": false,
+              "maxRunTime": 0,
+              "runAsInteractive": false,
+              "alwaysRun": false,
+              "applyUpdateBefore": false,
+              "preUpgrade": false,
+              "postUpgrade": false,
+              "install1PAppBefore": false
+            }
+          ],
+          "testType": "OutOfBoxTest",
+          "isActive": true
+        }
+    ],
+    "flightingRing": "",
+    
+    "packageTags": {},
+    "highlightedFiles": [
+      {
+        "path": "scripts/outofbox/install.ps1",
+        "visited": false,
+        "sections": [
+          "Introduction",
+          "Commands",
+          "Verify"
+        ]
+      },
+      {
+        "path": "scripts/outofbox/launch.ps1",
+        "visited": false,
+        "sections": [
+          "Introduction",
+          "Commands",
+          "Verify"
+        ]
+      },
+      {
+        "path": "scripts/outofbox/close.ps1",
+        "visited": false,
+        "sections": [
+          "Introduction",
+          "Commands",
+          "Verify"
+        ]
+      },
+      {
+        "path": "scripts/outofbox/uninstall.ps1",
+        "visited": false,
+        "sections": [
+          "Introduction",
+          "Commands",
+          "Verify"
+        ]
+      }
+    ],
+    "tabState": {
+      "currentTab": "ReviewAndCreateTab"
+    }
+  }
+}
