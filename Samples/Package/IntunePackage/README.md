@@ -3,16 +3,15 @@
 ### Prerequisites
 #### How to get authentication token by using the azure CLI
 1. Use winget to Install and manage updates for Azure CLI.
-
+```
 winget install -e --id Microsoft.AzureCLI
+```
 
-1. Begin signing in to azure by using Azure CLI to run the ‘az login’ command.
-1. Generation your Azure AD access token by running the ‘az account get-access-token’ command.
-1. Add the token to header like ‘Authorization: Bearer xxxxxxxxx’
-#### How to get authentication token for Graph API
-1. Go to graph.microsoft.io and click on graph explorer – or store [this url](https://developer.microsoft.com/en-us/graph/graph-explorer)
-1. Click on the sign in button on the left
-1. After signing in you can now access what ever you need to do directly from the Graph Explorer, or, you can click on “Access token” and extract it for being put into the authorization header
+2. Begin signing in to azure by using Azure CLI to run the 'az login' command.
+1. Generation your Azure AD access token by running the 'az account get-access-token' command.
+1. For Azure RESTAPI, Add the  Azure AD token to header like 'Authorization: Bearer xxxxxxxxx'
+1. Generation your MS Graph API access token by running the 'az account get-access-token --resource-type ms-graph' command.
+1. For MS Graph API, Add the MS Graph API token to header like 'Authorization: Bearer xxxxxxxxx'
 ## Creating Package Flow
 Create DraftPackage->Get DraftPackage Path->Upload intune file->Extract File-> Patch DraftPackage->GenerateFolders And Scripts->Create Package->Delete DraftPackage
 

@@ -23,7 +23,7 @@ $uploadList = [System.Collections.ArrayList]@('bin');
 # Connect to Azure Account
 #--------------------------------------------------------------------------------------------------------------
 Write-Host "Sign in with a service principal."
-az login --use-device-code 
+az login
 
 Write-Host "az account set --subscription $subscriptionId"
 az account set --subscription $subscriptionId
@@ -36,6 +36,7 @@ $authHeader = @{
 }
 
 Write-Host "Get graph API Access Token"
+$graphAccessTokenString = $(az account get-access-token --query accessToken --resource-type ms-graph --output tsv)
 $graphAuthHeader = @{
     "Authorization" = "Bearer $graphAccessTokenString"
 }
