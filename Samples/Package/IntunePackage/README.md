@@ -43,15 +43,15 @@ In the request URL, provide the following query parameters with values.
 ##### Request
 
 ```http
-PUT https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0?api-version=2023-01-01-preview
+PUT https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002?api-version=2023-01-01-preview
 ```
 
 ##### Response
 
 ```http
 {
-  "id": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0",
-  "name": "ACCA5D09-096E-4356-99E3-5F4DCB2E19D0",
+  "id": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002",
+  "name": "54465842-e334-11ed-b5ea-0242ac120002",
   "type": "microsoft.testbase/testbaseaccounts/draftpackages",
   "systemData": {
     "createdBy": "<username>",
@@ -63,8 +63,8 @@ PUT https://management.azure.com/subscriptions/subscription-id/resourceGroups/co
   },
   "properties": {
     "lastModifiedTime": "2023-03-21T05:52:22.6469067Z",
-    "draftPackagePath": "e54624e1-e6dc-4716-900c-eedbafda70d3/5f37f5a4-17cb-414a-b0c9-d817c6a49fb7/draftPackagePath",
-    "workingPath": "e54624e1-e6dc-4716-900c-eedbafda70d3/5f37f5a4-17cb-414a-b0c9-d817c6a49fb7/workingPath",
+    "draftPackagePath": "e901c95e-e333-11ed-b5ea-0242ac120002/f3aedd1a-e333-11ed-b5ea-0242ac120002/draftPackagePath",
+    "workingPath": "e901c95e-e333-11ed-b5ea-0242ac120002/f3aedd1a-e333-11ed-b5ea-0242ac120002/workingPath",
     "sourceType": "Native",
     "useSample": false,
     "editPackage": false,
@@ -101,7 +101,7 @@ In the request URL, provide the following query parameters with values.
 ##### Request
 
 ```http
-POST https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0/getPath?api-version=2023-01-01-preview
+POST https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002/getPath?api-version=2023-01-01-preview
 ```
 
 ##### Response
@@ -109,8 +109,8 @@ POST https://management.azure.com/subscriptions/subscription-id/resourceGroups/c
 ```http
 {
     "baseUrl": "some URL",
-    "draftPackagePath": "e54624e1-e6dc-4716-900c-eedbafda70d3/5f37f5a4-17cb-414a-b0c9-d817c6a49fb7/draftPackagePath",
-    "workingPath": "e54624e1-e6dc-4716-900c-eedbafda70d3/5f37f5a4-17cb-414a-b0c9-d817c6a49fb7/workingPath",
+    "draftPackagePath": "e901c95e-e333-11ed-b5ea-0242ac120002/f3aedd1a-e333-11ed-b5ea-0242ac120002/draftPackagePath",
+    "workingPath": "e901c95e-e333-11ed-b5ea-0242ac120002/f3aedd1a-e333-11ed-b5ea-0242ac120002/workingPath",
     "sasToken": "sas Token",
     "expirationTime": "2023-03-15T03:54:33.1935911Z"
 }
@@ -142,7 +142,7 @@ In the request URL, provide the following query parameters with values.
 ##### Request
 
 ```http
-POST https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0/extractFile?api-version=2023-01-01-preview
+POST https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002/extractFile?api-version=2023-01-01-preview
 
 {
     "sourceFile": "bin/<intune file name>"
@@ -180,7 +180,7 @@ In the request URL, provide the following query parameters with values.
 ##### Request
 
 ```http
-POST https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0/generateFoldersAndScripts?api-version=2023-01-01-preview
+POST https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002/generateFoldersAndScripts?api-version=2023-01-01-preview
 ```
 
 ##### Response
@@ -228,7 +228,7 @@ In the request URL, provide the following query parameters with values.
 ##### Request
 
 ```http
-PATCH https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0?api-version=2023-01-01-preview
+PATCH https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002?api-version=2023-01-01-preview
 
 {
   "properties": {
@@ -292,8 +292,8 @@ PATCH https://management.azure.com/subscriptions/subscription-id/resourceGroups/
 ##### Response
 ```http
 {
-  "id": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0",
-  "name": "ACCA5D09-096E-4356-99E3-5F4DCB2E19D0",
+  "id": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002",
+  "name": "54465842-e334-11ed-b5ea-0242ac120002",
   "properties": {
     "applicationName": "Intune App Dependency",
     "version": "1111",
@@ -380,8 +380,8 @@ PATCH https://management.azure.com/subscriptions/subscription-id/resourceGroups/
         ]
       }
     ],
-    "draftPackagePath": "e54624e1-e6dc-4716-900c-eedbafda70d3/5f37f5a4-17cb-414a-b0c9-d817c6a49fb7/draftPackagePath",
-    "workingPath": "e54624e1-e6dc-4716-900c-eedbafda70d3/5f37f5a4-17cb-414a-b0c9-d817c6a49fb7/workingPath",
+    "draftPackagePath": "e901c95e-e333-11ed-b5ea-0242ac120002/f3aedd1a-e333-11ed-b5ea-0242ac120002/draftPackagePath",
+    "workingPath": "e901c95e-e333-11ed-b5ea-0242ac120002/f3aedd1a-e333-11ed-b5ea-0242ac120002/workingPath",
     "appFileName": "setup.intunewin",
     "sourceType": "IntuneWin",
     "useSample": false,
@@ -499,14 +499,14 @@ In the request URL, provide the following query parameters with values.
 ##### Request
 
 ```http
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TestBase/testBaseAccounts/{testBaseAccountName}/packages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0?api-version=2023-01-01-preview
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TestBase/testBaseAccounts/{testBaseAccountName}/packages/54465842-e334-11ed-b5ea-0242ac120002?api-version=2023-01-01-preview
 
 {
   "location": "global",
   "properties": {
     "applicationName": "setup",
     "version": "21.007.20099",
-    "draftPackageId": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0"
+    "draftPackageId": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002"
   }
 }
 ```
@@ -515,8 +515,8 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ```http
 {
-  "id": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/packages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0",
-  "name": "ACCA5D09-096E-4356-99E3-5F4DCB2E19D0",
+  "id": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/packages/54465842-e334-11ed-b5ea-0242ac120002",
+  "name": "54465842-e334-11ed-b5ea-0242ac120002",
   "type": "microsoft.testbase/testbaseaccounts/packages",
   "location": "global",
   "systemData": {
@@ -530,7 +530,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
   "properties": {
     "applicationName": "setup",
     "version": "17171",
-    "draftPackageId": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0",
+    "draftPackageId": "/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002",
     "provisioningState": "Accepted"
   }
 }
@@ -561,7 +561,7 @@ In the request URL, provide the following query parameters with values.
 ##### Request
 
 ```http
-DELETE https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/ACCA5D09-096E-4356-99E3-5F4DCB2E19D0?api-version=2023-01-01-preview
+DELETE https://management.azure.com/subscriptions/subscription-id/resourceGroups/contoso-rg1/providers/Microsoft.TestBase/testBaseAccounts/contoso-testBaseAccount1/draftPackages/54465842-e334-11ed-b5ea-0242ac120002?api-version=2023-01-01-preview
 ```
 
 ##### Response
