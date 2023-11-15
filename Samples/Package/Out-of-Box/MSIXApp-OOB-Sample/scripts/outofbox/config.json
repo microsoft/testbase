@@ -1,0 +1,7 @@
+{
+  "appProcessName": "7zFM",
+  "packageMSIXName": "7Zip.msix",
+  "packageIdentityName": "7Zip",
+  "signingCertName": "cert.pfx",
+  "signingCertPassword": "Password01!"
+}
