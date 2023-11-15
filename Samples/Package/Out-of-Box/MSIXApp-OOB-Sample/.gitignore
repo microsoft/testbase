@@ -1,0 +1,2 @@
+# Do not ignore the certificate file for MSIX OOB sample
+!cert.pfx
