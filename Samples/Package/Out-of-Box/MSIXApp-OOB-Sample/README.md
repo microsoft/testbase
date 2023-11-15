@@ -48,7 +48,7 @@ _An OOB test performs an install, launch, close, and uninstall of your applicati
    ```
 
 1. Upload to Test Base service.
-   Follow this [guide](https://docs.microsoft.com/en-us/microsoft-365/test-base/uploadapplication?view=o365-worldwide) to upload this zip package.  
+   Follow this [guide](https://learn.microsoft.com/en-us/microsoft-365/test-base/uploadapplication?view=o365-worldwide) to upload this zip package.  
    The script paths are as follows:
    - **Install script**: scripts/outofbox/install.ps1
    - **Launch script**: scripts/outofbox/launch.ps1

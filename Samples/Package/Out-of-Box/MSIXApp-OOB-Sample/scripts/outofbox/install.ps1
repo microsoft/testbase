@@ -69,9 +69,9 @@ Pop-Location
 # Step 2: Check if installation is succeeded
 # begin section Verify
 # Examples of common commands
-#    - Check install process exit code: $installer.exitcode -eq 0
+#    - Check install process exit code: $installer.ExitCode -eq 0
 #    - Check registry: Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
-#    - Check installed software list: Get-WmiObject -Class Win32_Product | where name -eq "Node.js"
+#    - Check installed software list: Get-WmiObject -Class Win32_Product | Where-Object { $_.Name -eq "Node.js" }
 $app = Get-AppxPackage -Name "*$($config.packageIdentityName)*"
 if ($app -ne $null) {
     Log("Installation successful")
