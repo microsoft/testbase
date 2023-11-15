@@ -25,6 +25,19 @@ _An OOB test performs an install, launch, close, and uninstall of your applicati
    }
    ```
 
+   For the `packageIdentityName` variable in `config.json`, if the `AppxManifest.xml` in the MSIX package is shown as the following example:
+
+   ```xml
+   <?xml version="1.0" encoding="utf-8"?>
+   <Package>
+      ...
+      <Identity Name="7Zip" />
+      ...
+   </Package>
+   ```
+
+   Since the value of `Name` attribute of `Identity` tag is `7Zip`, then the `packageIdentityName` variable should be set to `7Zip`.
+
 1. Zip the package.
    Under current location, run the following PowerShell command to zip a Test Base package.
 
