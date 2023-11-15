@@ -19,7 +19,7 @@ _An OOB test performs an install, launch, close, and uninstall of your applicati
    {
      "appProcessName": "<Name of the application process to be launched, e.g., 7zFM>",
      "packageMSIXName": "<Name of the MSIX package file in bin folder, e.g., 7Zip.msix>",
-     "packageIdentityName": "<Name attribute value of Identity tag in the MSIX package manifest, e.g., 7Zip>",
+     "packageIdentityName": "<Value of the Name attribute of Identity tag in the MSIX package manifest (AppxManifest.xml), e.g., 7Zip>",
      "signingCertName": "<Name of the certificate to sign the MSIX package in bin folder, e. g., cert.pfx>",
      "signingCertPassword": "<Password of the certificate to sign the MSIX package, e. g., Password01!>"
    }

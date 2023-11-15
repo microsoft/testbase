@@ -1,9 +1,9 @@
-push-location $PSScriptRoot
+Push-Location $PSScriptRoot
 
 $config = Get-Content ".\config.json" | ConvertFrom-Json
 
 $exit_code = 0
-$script_name = $myinvocation.mycommand.name
+$script_name = $MyInvocation.MyCommand.Name
 # You can use the following variables to construct file path
 # Root folder
 $root_dir = "$PSScriptRoot\..\.."
@@ -14,14 +14,17 @@ $log_dir = "$root_dir\logs"
 
 $log_file = "$log_dir\$script_name.log"
 
-if (-not (test-path -path $log_dir )) {
-   new-item -itemtype directory -path $log_dir
+if (-not (Test-Path -Path $log_dir )) {
+   New-Item -ItemType Directory -Path $log_dir
 }
 
-Function log {
-   Param ([string]$log_string)
-   write-host $log_string
-   add-content $log_file -value $log_string
+function Log {
+   param (
+      [string]$log_string
+   )
+
+   Write-Host $log_string
+   Add-Content $log_file -Value $log_string
 }
 
 # Step 1: Stop the application
@@ -31,27 +34,27 @@ Function log {
 $PROCESS_NAME = $config.appProcessName
 $lookup_process = Get-Process -Name $PROCESS_NAME
 if ($lookup_process) {
-   log("Stopping $PROCESS_NAME...")        
+   Log("Stopping $PROCESS_NAME...")        
    Stop-process -Name $PROCESS_NAME
 }
 else {
-   log("Error: cannot find process named as $($PROCESS_NAME)")
+   Log("Error: cannot find process named as $($PROCESS_NAME)")
    $exit_code = 1
 }
 # end section Commands
 
 # Step 2: Check application is stopped successfully
 # begin section Verify
-$appclosed = Get-Process -Name $PROCESS_NAME
-if ($appclosed.HasExited) {
-   log("close successful $($appclosed.HasExited)")
+$appClosed = Get-Process -Name $PROCESS_NAME
+if ($appClosed.HasExited) {
+   Log("close successful $($appClosed.HasExited)")
 }
 else {
-   log("Error: close failed as $($appclosed.ExitCode)")
+   Log("Error: close failed as $($appClosed.ExitCode)")
    $exit_code = 1
 }
 # end section Verify
 
-log("close script finished as $exit_code")
-pop-location
+Log("close script finished as $exit_code")
+Pop-Location
 exit $exit_code
