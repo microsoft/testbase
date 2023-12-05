@@ -1,0 +1,8 @@
+{
+  "location": "global",
+  "properties": {
+    "applicationName": "setup",
+    "version": "21.007.20099",
+    "draftPackageId": "/subscriptions/<subscription>/resourceGroups/<resourceGroup>/providers/Microsoft.TestBase/testBaseAccounts/<accountName>/draftPackages/<draftPackageName>"
+  }
+}
