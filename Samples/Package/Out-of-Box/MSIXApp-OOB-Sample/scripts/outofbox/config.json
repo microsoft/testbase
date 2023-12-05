@@ -1,0 +1,7 @@
+{
+  "appProcessName": "Calculator",
+  "packageMSIXName": "Calculator.msix",
+  "packageIdentityName": "Calculator",
+  "signingCertName": "cert.pfx",
+  "signingCertPassword": "Password01!"
+}
