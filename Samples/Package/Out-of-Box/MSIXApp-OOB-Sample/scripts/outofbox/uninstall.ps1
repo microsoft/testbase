@@ -29,7 +29,7 @@ log("Uninstalling Application")
 push-location $bin_dir
 # Step 1: Uninstall the application
 # begin section Commands
-$app = Get-AppxPackage -Name "$($config.packageIdentityName)*"
+$app = Get-AppxPackage -Name $config.packageIdentityName
 Remove-AppxPackage $app.PackageFullName
 # end section Commands 
 pop-location

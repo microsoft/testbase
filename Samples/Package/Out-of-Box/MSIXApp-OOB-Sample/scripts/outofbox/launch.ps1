@@ -31,7 +31,7 @@ log("Launch Application")
 #    - Use environment variable if need: Start-Process -FilePath "$env:comspec" -ArgumentList "/c dir `"%systemdrive%\program files`""
 # begin section Commands
 # Change the execution path, add -ArgumentList if need.
-$app = Get-AppxPackage -Name "$($config.packageIdentityName)*"
+$app = Get-AppxPackage -Name $config.packageIdentityName
 $info = Get-AppxPackageManifest $app.PackageFullName
 $appInfo = $info.Package.Applications.Application
 

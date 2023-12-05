@@ -69,7 +69,7 @@ pop-location
 #    - Check install process exit code: $installer.exitcode -eq 0
 #    - Check registry: Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
 #    - Check installed software list: Get-WmiObject -Class Win32_Product | where name -eq "Node.js"
-$app = Get-AppxPackage -Name "*$($config.packageIdentityName)*"
+$app = Get-AppxPackage -Name $config.packageIdentityName
 if ($app -ne $null) {
     log("Installation successful")
     exit 0
